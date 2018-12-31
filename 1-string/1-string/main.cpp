@@ -40,6 +40,32 @@ char *replaceSpace(char str[],int len) {
     return res;
 }
 
+// 原地替换字符串
+void replaceSpace2(char str[],int maxLen) {
+    int count = 0;
+    int len = 0;
+    int i = 0;
+    while (str[i++] != '\0') {
+        len++;
+        if (str[i] == ' ') {
+            count++;
+        }
+    }
+    int newlen = len + count * 2;
+    int pre = len - 1;
+    int next = newlen - 1;
+    while (pre >= 0 && next > pre) {
+        if (str[pre] != ' ') {
+            str[next--] = str[pre];
+        } else {
+            str[next--] = '0';
+            str[next--] = '2';
+            str[next--] = '%';
+        }
+        pre--;
+    }
+}
+
 int main() {
     char str[] = "hello world";
     reverseString(str, 11);
@@ -49,5 +75,8 @@ int main() {
     int len = sizeof(str2) / sizeof(str2[0]) - 1;
     char *res = replaceSpace(str2, len);
     printf("res:%s\n",res);
+    char str3[100] = "I am a man";
+    replaceSpace2(str3, 100);
+    printf("%s\n",str3);
     return 0;
 }
