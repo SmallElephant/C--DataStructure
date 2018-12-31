@@ -35,3 +35,9 @@ len = str.length();
   getchar();
   scanf("%c",&t);
  ```
+ 
+## malloc 内存分配
+
+```
+char *res = (char *)malloc(sizeof(char) * total);
+``` 
