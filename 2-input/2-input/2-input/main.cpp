@@ -19,7 +19,13 @@ int main() {
     scanf("%c",&t);
     int start = -1;
     int end = -1;
-    for (int i = 0; i < maxsize; i++) {
+    int len = 0;
+    int index = 0;
+    while (*(num+index)!= '\0') {
+        index = index + 1;
+        len = len+1;
+    }
+    for (int i = 0; i < len; i++) {
         if (num[i] == t) {
             if (start == -1) {
                 start = i;
