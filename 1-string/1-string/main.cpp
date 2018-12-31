@@ -66,6 +66,28 @@ void replaceSpace2(char str[],int maxLen) {
     }
 }
 
+int *mergeArr(int a[],int b[],int len1,int len2) {
+    int len = len1 + len2;
+    int *arr = (int *)malloc(sizeof(int) * len);
+    int k = 0;
+    int i = 0;
+    int j = 0;
+    while (i < len1 && j < len2) {
+        if (a[i] < b[j]) {
+            arr[k++] = a[i++];
+        } else {
+            arr[k++] = b[j++];
+        }
+    }
+    while (i < len1) {
+        arr[k++] = a[i++];
+    }
+    while (j < len2) {
+        arr[k++] = b[j++];
+    }
+    return arr;
+}
+
 int main() {
     char str[] = "hello world";
     reverseString(str, 11);
@@ -78,5 +100,13 @@ int main() {
     char str3[100] = "I am a man";
     replaceSpace2(str3, 100);
     printf("%s\n",str3);
+    
+    int a[5] = {1,3,5,7,9};
+    int b[5] = {2,4,6,8,10};
+    int *res1 = mergeArr(a, b, 5, 5);
+    int count = 10;
+    for (int i = 0; i < count; i++) {
+        printf("%d\n",res1[i]);
+    }
     return 0;
 }
