@@ -267,6 +267,31 @@ BTNode *consturct(char preorder[],int prestart,int preend,char inorder[],int ins
     return root;
 }
 
+BTNode *consturct2(char preorder[],int prestart,char inorder[],int instart,int inend) {
+    if (instart > inend) {
+        return NULL;
+    }
+    BTNode *root=(BTNode *)malloc(sizeof(BTNode));
+    if (instart==inend) {
+        root->data = inorder[inend];
+        root->lchild = NULL;
+        root->rchild = NULL;
+        return root;
+    }
+    char first = preorder[prestart];
+    int index = findValue(inorder, first, instart, inend);
+    int leftLen = index - instart; //左子树的长度
+    int rightLen = inend - index; //右子树长度
+    int start1 = prestart+1;
+    int end1 = prestart+leftLen;
+    int start2 = instart;
+    int end2 = instart+leftLen-1;
+    root->data = first;
+    root->lchild = consturct2(preorder, start1, inorder, start2, end2);
+    root->rchild = consturct2(preorder, end1+1, inorder, end2+2, end2+rightLen+1);
+    return root;
+}
+
 int main() {
     BTNode node1 = {'1',NULL,NULL};
     BTNode node2 = {'2',NULL,NULL};
@@ -308,6 +333,10 @@ int main() {
     BTNode *rootTest = consturct(preorder1, 0, 7, inorder1, 0, 7);
     printf("根结点的值:%c\n",rootTest->data);
     inorder(rootTest);
+    printf("\n");
+    BTNode *rootTest2 = consturct2(preorder1, 0, inorder1, 0, 7);
+    printf("根结点的值:%c\n",rootTest2->data);
+    inorder(rootTest2);
     printf("\n");
     return 0;
 }
