@@ -281,14 +281,11 @@ BTNode *consturct2(char preorder[],int prestart,char inorder[],int instart,int i
     char first = preorder[prestart];
     int index = findValue(inorder, first, instart, inend);
     int leftLen = index - instart; //左子树的长度
-    int rightLen = inend - index; //右子树长度
     int start1 = prestart+1;
     int end1 = prestart+leftLen;
-    int start2 = instart;
-    int end2 = instart+leftLen-1;
     root->data = first;
-    root->lchild = consturct2(preorder, start1, inorder, start2, end2);
-    root->rchild = consturct2(preorder, end1+1, inorder, end2+2, end2+rightLen+1);
+    root->lchild = consturct2(preorder, start1, inorder, instart, index-1);
+    root->rchild = consturct2(preorder, end1+1, inorder, index+1, inend);
     return root;
 }
 
