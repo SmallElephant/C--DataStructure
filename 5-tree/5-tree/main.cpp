@@ -189,7 +189,6 @@ int maxTreeWidth(BTNode *root) {
     if (root==NULL) {
         return 0;
     }
-    int max = 0;
     Level queue[maxsize];
     int front = 0;
     int rear = 0;
@@ -202,13 +201,15 @@ int maxTreeWidth(BTNode *root) {
         int curl = lNode.lno;
         if (curBT->lchild != NULL) {
             maxLevel = curl + 1;
-            Level t = {curBT->lchild,maxLevel};
-            queue[rear++] = t;
+            queue[rear].node = curBT->lchild;
+            queue[rear].lno = curl + 1;
+            rear++;
         }
         if (curBT->rchild != NULL) {
             maxLevel = curl + 1;
-            Level t = {curBT->rchild,curl+1};
-            queue[rear++] = t;
+            queue[rear].node = curBT->rchild;
+            queue[rear].lno = maxLevel;
+            rear++;
         }
     }
     int res = 0;
