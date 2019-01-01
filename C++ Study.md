@@ -39,5 +39,6 @@ len = str.length();
 ## malloc 内存分配
 
 ```
-char *res = (char *)malloc(sizeof(char) * total);
+    char *res = (char *)malloc(sizeof(char) * len);
+    char res[maxsize];
 ``` 

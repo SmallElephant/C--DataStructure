@@ -116,13 +116,16 @@ void printPath(char path[],int len) {
 
 void printTargetPath(char path[], int len,int target) {
     int sum = 0;
-    char *res = (char *)malloc(sizeof(char) * len);
+    char res[maxsize];
     for (int i = 0; i < len; i++) {
         sum += path[i] - '0';
         res[i] = path[i];
     }
     if (sum == target) {
-        printf("%s\n",res);
+        for (int i = 0; i < len; i++) {
+            printf("%c",res[i]);
+        }
+        printf("\n");
     }
 }
 
@@ -132,11 +135,49 @@ void printAllPaths(BTNode *root,char paths[],int len) {
     }
     paths[len++] = root->data;
     if (root->lchild == NULL && root->rchild == NULL) {
-        printPath(paths, len);
-//        printTargetPath(paths, len, 15);
+//        printPath(paths, len);
+        printTargetPath(paths, len, 15);
     }
     printAllPaths(root->lchild, paths, len);
     printAllPaths(root->rchild, paths, len);
+}
+
+// 二叉树的高度
+
+int getTreeHeight(BTNode *root) {
+    if (root==NULL) {
+        return 0;
+    }
+    int leftHeight = getTreeHeight(root->lchild) + 1;
+    int rightHeight = getTreeHeight(root->rchild) + 1;
+    return leftHeight > rightHeight ? leftHeight : rightHeight;
+}
+
+// 二叉树的层次遍历
+
+void levelorder(BTNode *root) {
+    if (root==NULL) {
+        return;
+    }
+    BTNode *queue[maxsize];
+    int front = 0;
+    int rear = 0;
+    rear = (rear + 1) % maxsize;
+    queue[rear] = root;
+    while (front != rear) {
+        front = (front + 1) % maxsize;
+        BTNode *node = queue[front];
+        visit(node);
+        if (node->lchild != NULL) {
+            rear = (rear + 1) % maxsize;
+            queue[rear] = node->lchild;
+        }
+        if (node->rchild != NULL) {
+            rear = (rear + 1) % maxsize;
+            queue[rear] = node->rchild;
+        }
+    }
+    printf("\n");
 }
 
 int main() {
@@ -169,5 +210,8 @@ int main() {
     postorderNonrecursion(&node1);
     char paths[maxsize];
     printAllPaths(&node1, paths, 0);
+    int height = getTreeHeight(&node1);
+    printf("binary tree height:%d\n",height);
+    levelorder(&node1);
     return 0;
 }
