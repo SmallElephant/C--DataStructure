@@ -16,6 +16,11 @@ typedef struct BTNode {
     struct BTNode *rchild;
 } BTNode;
 
+typedef struct Level {
+    struct BTNode *node;
+    int lno;
+} Level;
+
 void visit(BTNode *node) {
     printf("%c",node->data);
 }
@@ -180,6 +185,50 @@ void levelorder(BTNode *root) {
     printf("\n");
 }
 
+int maxTreeWidth(BTNode *root) {
+    if (root==NULL) {
+        return 0;
+    }
+    int max = 0;
+    Level queue[maxsize];
+    int front = 0;
+    int rear = 0;
+    int maxLevel = 1;
+    Level node = {root,maxLevel};
+    queue[rear++] = node;
+    while (front != rear) {
+        Level lNode= queue[front++];
+        BTNode *curBT = lNode.node;
+        int curl = lNode.lno;
+        if (curBT->lchild != NULL) {
+            maxLevel = curl + 1;
+            Level t = {curBT->lchild,maxLevel};
+            queue[rear++] = t;
+        }
+        if (curBT->rchild != NULL) {
+            maxLevel = curl + 1;
+            Level t = {curBT->rchild,curl+1};
+            queue[rear++] = t;
+        }
+    }
+    int res = 0;
+    for (int i = 1; i <= maxLevel; i++) {
+        int count = 0;
+        for (int j = 0; j < rear; j++) {
+            Level level = queue[j];
+            if (level.lno == i) {
+                count++;
+            }
+        }
+        if (count > res) {
+            res = count;
+        }
+    }
+    return res;
+}
+
+// 二叉树的宽度
+
 int main() {
     BTNode node1 = {'1',NULL,NULL};
     BTNode node2 = {'2',NULL,NULL};
@@ -213,5 +262,6 @@ int main() {
     int height = getTreeHeight(&node1);
     printf("binary tree height:%d\n",height);
     levelorder(&node1);
+    maxTreeWidth(&node1);
     return 0;
 }
