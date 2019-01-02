@@ -18,6 +18,14 @@ typedef struct TBTNode {
     int rtag; // 0表示rchild指向是右孩子，1表示指向其后继
 } TBTNode;
 
+typedef struct BTNextNode {
+    char data;
+    struct BTNextNode *lchild;
+    struct BTNextNode *rchild;
+    struct BTNextNode *next;
+} BTNextNode;
+
+
 
 void visit(TBTNode *node) {
     printf("%c",node->data);
@@ -133,6 +141,30 @@ void printPreThread(TBTNode *root) {
     }
 }
 
+BTNextNode *getNextNode(BTNextNode *node) {
+    if (node == NULL) {
+        return NULL;
+    }
+    BTNextNode *cur = node;
+    BTNextNode *p=NULL;
+    if (cur->rchild != NULL) { // 右子树存在，找到右子树最左下的孩子结点
+        p = cur->rchild;
+        while (p->lchild != NULL) {
+            p = p->lchild;
+        }
+    } else {
+        p = cur;
+        if (p->next->lchild == p) { // 节点位置处于根节点的左侧
+            return p->next;
+        } else { // 节点位于根节点的右侧
+            while (p->next != NULL) {
+                p = p->next;
+            }
+        }
+    }
+    return p;
+}
+
 int main() {
     TBTNode node1 = {'1',NULL,NULL};
     TBTNode node2 = {'2',NULL,NULL};
@@ -148,8 +180,27 @@ int main() {
     // 先序遍历打印
 //    preThread(&node1);
 //    printPreThread(&node1);
-    createThread(&node1);
-    inOrderThread(&node1);
-    printf("\n");
+    // 二叉树的中序线索化及打印
+//    createThread(&node1);
+//    inOrderThread(&node1);
+//    printf("\n");
+    BTNextNode n1 = {'1',NULL,NULL};
+    BTNextNode n2 = {'2',NULL,NULL};
+    BTNextNode n3 = {'3',NULL,NULL};
+    BTNextNode n4 = {'4',NULL,NULL};
+    BTNextNode n5 = {'5',NULL,NULL};
+    BTNextNode n6 = {'6',NULL,NULL};
+    n1.lchild = &n2;
+    n1.rchild = &n4;
+    n2.lchild = &n3;
+    n2.rchild = &n5;
+    n4.lchild = &n6;
+    n3.next = &n2;
+    n5.next = &n2;
+    n2.next = &n1;
+    n6.next = &n4;
+    n4.next = &n1;
+    BTNextNode *next = getNextNode(&n5);
+    printf("next value:%c\n",next->data);
     return 0;
 }
