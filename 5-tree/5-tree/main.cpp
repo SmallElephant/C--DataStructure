@@ -46,6 +46,43 @@ TBTNode *inorderlist(TBTNode *root,int len) {
     return list;
 }
 
+// 二叉树的中序线索化
+void inThread(TBTNode *p, TBTNode *&pre) {
+    if (p == NULL) {
+        return;
+    }
+    inThread(p->lchild, pre);
+    if (pre != NULL && pre->rchild == NULL) {
+        pre->rchild = p;
+        pre->rtag = 1;
+    }
+    if (pre != NULL && p->lchild == NULL) {
+        p->lchild = pre;
+        p->ltag = 1;
+    }
+    inThread(p->rchild, p);
+}
+
+void preThread(TBTNode *p, TBTNode *&pre) {
+    if (p == NULL) {
+        return;
+    }
+    if (pre != NULL && pre->rchild == NULL) {
+        pre->rtag = 1;
+        pre->rchild = p;
+    }
+    if (pre != NULL && p->lchild == NULL) {
+        p->ltag = 1;
+        p->lchild = pre;
+    }
+    if (p->ltag == 0) {
+        preThread(p->lchild, pre);
+    }
+    if (p->rtag == 0) {
+        preThread(p->rchild, p);
+    }
+}
+
 int main() {
     TBTNode node1 = {'1',NULL,NULL};
     TBTNode node2 = {'2',NULL,NULL};
@@ -58,12 +95,25 @@ int main() {
     node2.lchild = &node3;
     node2.rchild = &node5;
     node4.lchild = &node6;
-    printf("\n");
     TBTNode *list = inorderlist(&node1, 6);
+    printf("\n");
+    TBTNode *pre=NULL;
     for (int i=0; i < 6; i++) {
-        TBTNode *node = list+i;
-        printf("node的值：%c---\n\n",node->data);
-        
+        TBTNode *cur = list+i;
+        printf("node的值：%c---\n",cur->data);
+        if (pre != NULL && pre->rchild == NULL) {
+            pre->rtag = 1;
+            pre->rchild = cur;
+        }
+        if (pre != NULL && cur->lchild == NULL) {
+            cur->lchild = pre;
+            cur->ltag = 1;
+        }
+        pre = cur;
+    }
+    for (int i=0; i < 6; i++) {
+        TBTNode *cur = list+i;
+        printf("node的值：%c---\n",cur->data);
     }
     return 0;
 }
