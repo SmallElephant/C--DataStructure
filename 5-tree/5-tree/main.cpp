@@ -47,36 +47,69 @@ TBTNode *inorderlist(TBTNode *root,int len) {
 }
 
 // 二叉树的中序线索化
-void inThread(TBTNode *p, TBTNode *&pre) {
+TBTNode *pre=NULL;
+void inThread(TBTNode *p) {
     if (p == NULL) {
         return;
     }
-    inThread(p->lchild, pre);
+    inThread(p->lchild);
     if (pre != NULL && pre->rchild == NULL) {
         pre->rchild = p;
         pre->rtag = 1;
     }
-    if (pre != NULL && p->lchild == NULL) {
+    if (p->lchild == NULL) {
         p->lchild = pre;
         p->ltag = 1;
     }
-    inThread(p->rchild, p);
+    pre = p;
+    inThread(p->rchild);
 }
 
-TBTNode *preNode=NULL;
+void createThread(TBTNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    inThread(root);
+    pre->rtag = 1;
+    pre->rchild = NULL;
+}
+
+// 中序线索化的第一个节点
+
+TBTNode *first(TBTNode *p) {
+    while (p->ltag==0) {
+        p = p->lchild; // 最左下的孩子
+    }
+    return p;
+}
+
+TBTNode *next(TBTNode *p) {
+    if (p->rtag == 0) {
+        return first(p->rchild); // 右孩子的最左下的节点
+    } else {
+        return p->rchild; // 后继存在直接返回后继
+    }
+}
+
+void inOrderThread(TBTNode *root) {
+    for (TBTNode *p=first(root); p != NULL; p = next(p)) {
+        visit(p);
+    }
+}
+
 void preThread(TBTNode *p) {
     if (p == NULL) {
         return;
     }
-    if (preNode != NULL && preNode->rchild == NULL) {
-        preNode->rtag = 1;
-        preNode->rchild = p;
+    if (pre != NULL && pre->rchild == NULL) {
+        pre->rtag = 1;
+        pre->rchild = p;
     }
-    if (preNode != NULL && p->lchild == NULL) {
+    if (p->lchild == NULL) {
         p->ltag = 1;
-        p->lchild = preNode;
+        p->lchild = pre;
     }
-    preNode = p;
+    pre = p;
     if (p->ltag == 0) {
         preThread(p->lchild);
     }
@@ -112,28 +145,11 @@ int main() {
     node2.lchild = &node3;
     node2.rchild = &node5;
     node4.lchild = &node6;
-    TBTNode *list = inorderlist(&node1, 6);
+    // 先序遍历打印
+//    preThread(&node1);
+//    printPreThread(&node1);
+    createThread(&node1);
+    inOrderThread(&node1);
     printf("\n");
-    TBTNode *pre=NULL;
-    for (int i=0; i < 6; i++) {
-        TBTNode *cur = list+i;
-        printf("node的值：%c---\n",cur->data);
-        if (pre != NULL && pre->rchild == NULL) {
-            pre->rtag = 1;
-            pre->rchild = cur;
-        }
-        if (pre != NULL && cur->lchild == NULL) {
-            cur->lchild = pre;
-            cur->ltag = 1;
-        }
-        pre = cur;
-    }
-    for (int i=0; i < 6; i++) {
-        TBTNode *cur = list+i;
-        printf("node的值：%c---\n",cur->data);
-    }
-
-    preThread(&node1);
-    printPreThread(&node1);
     return 0;
 }
