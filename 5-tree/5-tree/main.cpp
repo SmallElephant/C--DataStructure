@@ -154,12 +154,11 @@ BTNextNode *getNextNode(BTNextNode *node) {
         }
     } else {
         p = cur;
-        if (p->next->lchild == p) { // 节点位置处于根节点的左侧
-            return p->next;
-        } else { // 节点位于根节点的右侧
-            while (p->next != NULL) {
-                p = p->next;
+        while (p->next != NULL) {
+            if (p->next->lchild == p) { // 节点位置处于根节点的左侧
+                return p->next;
             }
+            p = p->next;
         }
     }
     return p;
