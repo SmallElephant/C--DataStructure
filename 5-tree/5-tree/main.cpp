@@ -63,23 +63,40 @@ void inThread(TBTNode *p, TBTNode *&pre) {
     inThread(p->rchild, p);
 }
 
-void preThread(TBTNode *p, TBTNode *&pre) {
+TBTNode *preNode=NULL;
+void preThread(TBTNode *p) {
     if (p == NULL) {
         return;
     }
-    if (pre != NULL && pre->rchild == NULL) {
-        pre->rtag = 1;
-        pre->rchild = p;
+    if (preNode != NULL && preNode->rchild == NULL) {
+        preNode->rtag = 1;
+        preNode->rchild = p;
     }
-    if (pre != NULL && p->lchild == NULL) {
+    if (preNode != NULL && p->lchild == NULL) {
         p->ltag = 1;
-        p->lchild = pre;
+        p->lchild = preNode;
     }
+    preNode = p;
     if (p->ltag == 0) {
-        preThread(p->lchild, pre);
+        preThread(p->lchild);
     }
     if (p->rtag == 0) {
-        preThread(p->rchild, p);
+        preThread(p->rchild);
+    }
+}
+
+void printPreThread(TBTNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    TBTNode *p = root;
+    while (p != NULL) {
+        while (p->ltag==0) {//左线索不存在
+            visit(p);
+            p = p->lchild;
+        }
+        visit(p);
+        p = p->rchild;//不论是否为线索都指向后继
     }
 }
 
@@ -115,5 +132,8 @@ int main() {
         TBTNode *cur = list+i;
         printf("node的值：%c---\n",cur->data);
     }
+
+    preThread(&node1);
+    printPreThread(&node1);
     return 0;
 }
