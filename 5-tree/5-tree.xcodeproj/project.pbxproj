@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DA7E4CE021DA5F55000FA99B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4CDF21DA5F55000FA99B /* main.cpp */; };
+		DA7E4CE821DB93E6000FA99B /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4CE621DB93E6000FA99B /* tree.cpp */; };
+		DA7E4CEB21DB94D6000FA99B /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4CE921DB94D6000FA99B /* thread.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,10 @@
 /* Begin PBXFileReference section */
 		DA7E4CDC21DA5F55000FA99B /* 5-tree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "5-tree"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7E4CDF21DA5F55000FA99B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		DA7E4CE621DB93E6000FA99B /* tree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = tree.cpp; sourceTree = "<group>"; };
+		DA7E4CE721DB93E6000FA99B /* tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tree.hpp; sourceTree = "<group>"; };
+		DA7E4CE921DB94D6000FA99B /* thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = thread.cpp; sourceTree = "<group>"; };
+		DA7E4CEA21DB94D6000FA99B /* thread.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = thread.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				DA7E4CDF21DA5F55000FA99B /* main.cpp */,
+				DA7E4CE621DB93E6000FA99B /* tree.cpp */,
+				DA7E4CE721DB93E6000FA99B /* tree.hpp */,
+				DA7E4CE921DB94D6000FA99B /* thread.cpp */,
+				DA7E4CEA21DB94D6000FA99B /* thread.hpp */,
 			);
 			path = "5-tree";
 			sourceTree = "<group>";
@@ -119,6 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7E4CE021DA5F55000FA99B /* main.cpp in Sources */,
+				DA7E4CEB21DB94D6000FA99B /* thread.cpp in Sources */,
+				DA7E4CE821DB93E6000FA99B /* tree.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

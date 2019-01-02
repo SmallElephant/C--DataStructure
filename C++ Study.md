@@ -42,3 +42,13 @@ len = str.length();
     char *res = (char *)malloc(sizeof(char) * len);
     char res[maxsize];
 ``` 
+
+## 指针与地址
+
+```
+*list 是一个变量，类型是TBNode，可以进行读写操作，list是地址，可以直接进行加减运算
+```
+
+```
+TBNode *list;
+```
