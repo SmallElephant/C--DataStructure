@@ -22,12 +22,33 @@ int *convertToBinary(int num) {
     return arr;
 }
 
+int countBinaryNum(int num) {
+    int count = 0;
+    int p = num;
+    while (p > 0) {
+        int mod = p % 2;
+        if (mod == 1) {
+            count++;
+        }
+        p = p / 2;
+    }
+    return count;
+}
+
 int main() {
     int num = 9;
     int *res = convertToBinary(num);
     for (int i = 0; i < 10; i++) {
         int t = *(res+i);
         printf("current value:%d\n",t);
+    }
+    int p = 0;
+    scanf("%d",&p);
+    if (p < 0) {
+        printf("invalid arguements\n");
+    } else {
+        int count = countBinaryNum(p);
+        printf("%d中1的个数:%d\n",p,count);
     }
     return 0;
 }
