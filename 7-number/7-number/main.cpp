@@ -48,6 +48,18 @@ int numof1(int num) {
     return count;
 }
 
+int numof1_2(int num) {
+    int count = 0;
+    int n = num;
+    while (n) {
+        if (n & 1) { //  位运算
+            count++;
+        }
+        n = n >> 1;
+    }
+    return count;
+}
+
 int main() {
     int num = 9;
     int *res = convertToBinary(num);
@@ -58,7 +70,9 @@ int main() {
     int p = 9;
     int count = countBinaryNum(p);
     printf("%d中1的个数:%d\n",p,count);
-    int num1 = numof1(9);
+    int num1 = numof1(0x1001);
     printf("1--%d中1的个数:%d\n",p,num1);
+    int num2 = numof1_2(p);
+    printf("1--%d中1的个数:%d\n",p,num2);
     return 0;
 }
