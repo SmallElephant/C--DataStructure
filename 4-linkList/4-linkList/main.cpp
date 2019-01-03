@@ -66,7 +66,6 @@ LinkNode *deleteListNode2(LinkNode *root, char target) {
     if (root->data == target) {
         return root->next;
     } else {
-        LinkNode *pre = NULL;
         LinkNode *p = root;
         while (p->next != NULL) {
             if (p->next->data == target) {
@@ -77,6 +76,22 @@ LinkNode *deleteListNode2(LinkNode *root, char target) {
         }
         return root;
     }
+}
+
+LinkNode *deleteDuplicateNode(LinkNode *root) {
+    LinkNode *p = root;
+    while (p != NULL && p->next != NULL) {
+        if (p->data != p->next->data) {
+            p = p->next;
+        } else {
+            LinkNode *cur = p;
+            while (cur->data == cur->next->data) {
+                cur = cur->next;
+            }
+            p->next = cur->next;
+        }
+    }
+    return root;
 }
 
 int main() {
@@ -97,6 +112,23 @@ int main() {
     printf("\n");
     LinkNode *root = deleteListNode2(&n1, 'D');
     printLinkList(root);
+    printf("\n");
+    
+    LinkNode d1 = {'1',NULL};
+    LinkNode d2 = {'2',NULL};
+    LinkNode d3 = {'3',NULL};
+    LinkNode d4 = {'3',NULL};
+    LinkNode d5 = {'3',NULL};
+    LinkNode d6 = {'4',NULL};
+    LinkNode d7 = {'5',NULL};
+    d1.next = &d2;
+    d2.next = &d3;
+    d3.next = &d4;
+    d4.next = &d5;
+    d5.next = &d6;
+    d6.next = &d7;
+    LinkNode *del = deleteDuplicateNode(&d1);
+    printLinkList(del);
     printf("\n");
     return 0;
 }
