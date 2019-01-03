@@ -74,6 +74,17 @@ bool isEvenNumber(int num) {
     return num & (num - 1) ? false : true;
 }
 
+// change from num1 to num2
+int numOfPositions(int num1,int num2) {
+    int res = num1 ^ num2;
+    int count = 0;
+    while (res) {
+        res = res & (res - 1);
+        count++;
+    }
+    return count;
+}
+
 int main() {
     int num = 9;
     int *res = convertToBinary(num);
@@ -96,5 +107,7 @@ int main() {
     } else {
         printf("is not even number\n");
     }
+    int positions = numOfPositions(10, 13);
+    printf("change from 10 to 13 need chage %d position\n",positions);
     return 0;
 }
