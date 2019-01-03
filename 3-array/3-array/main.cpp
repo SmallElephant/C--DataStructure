@@ -76,6 +76,38 @@ int binarySearch(int arr[], int num, int n) {
     return -1;
 }
 
+int findPosition(int arr[],int left,int right) {
+    int val = arr[left];
+    for (int i = left; i <= right; i++) {
+        if (arr[i] < val) {
+            val = arr[i];
+        }
+    }
+    return val;
+}
+
+// 旋转数组中的最小数字
+int minRoateArray(int arr[],int n) {
+    int left = 0;
+    int right = n-1;
+    int mid = 0;
+    while (arr[left] >= arr[right]) { // 确保数组是旋转过的
+        if (right - left == 1) {
+            mid = right;
+            break;
+        }
+        mid = (left + right) / 2;
+        if (arr[left] == arr[mid] && arr[mid] == arr[right]) { // 无法判断中间数组属于左半部分和右半部分
+            return findPosition(arr, left, right);
+        }
+        if (arr[mid] >= arr[left]) { // 中间数字位于左侧递增数组
+            left = mid;
+        } else { // 位于右侧递增数组
+            right = mid;
+        }
+    }
+    return arr[mid];
+}
 
 int main() {
     int arr[7] = {2,3,4,5,2,3,1};
@@ -94,5 +126,11 @@ int main() {
     int search[] = {3,8,9,10,11,12};
     int index =binarySearch(search, 8, 6);
     printf("二分查找位置:%d\n",index);
+    int roateArr[] = {3,4,5,1,2};
+    int roateMin = minRoateArray(roateArr, 5);
+    printf("旋转数组的最小数字:%d\n",roateMin);
+    int roateArr1[] = {1,0,1,1,1};
+    int roateMin1 = minRoateArray(roateArr1, 5);
+    printf("旋转数组的最小数字1:%d\n",roateMin1);
     return 0;
 }
