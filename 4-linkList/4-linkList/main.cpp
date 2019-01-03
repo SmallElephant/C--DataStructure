@@ -62,6 +62,23 @@ LinkNode *deleteListNode(LinkNode *root, char target) {
     return root;
 }
 
+LinkNode *deleteListNode2(LinkNode *root, char target) {
+    if (root->data == target) {
+        return root->next;
+    } else {
+        LinkNode *pre = NULL;
+        LinkNode *p = root;
+        while (p->next != NULL) {
+            if (p->next->data == target) {
+                p->next = p->next->next;
+                break;
+            }
+            p = p->next;
+        }
+        return root;
+    }
+}
+
 int main() {
     LinkNode node1 = {'A',NULL};
     LinkNode node2 = {'B',NULL};
@@ -78,7 +95,7 @@ int main() {
     n3.next = &n4;
     printLinkList(&n1);
     printf("\n");
-    LinkNode *root = deleteListNode(&n1, 'A');
+    LinkNode *root = deleteListNode2(&n1, 'D');
     printLinkList(root);
     printf("\n");
     return 0;
