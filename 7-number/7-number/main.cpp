@@ -70,6 +70,10 @@ int numof1_3(int num) {
     return count;
 }
 
+bool isEvenNumber(int num) {
+    return num & (num - 1) ? false : true;
+}
+
 int main() {
     int num = 9;
     int *res = convertToBinary(num);
@@ -86,5 +90,11 @@ int main() {
     printf("1--%d中1的个数:%d\n",p,num2);
     int num3 = numof1_3(p);
     printf("1--%d中1的个数:%d\n",p,num3);
+    bool isEven = isEvenNumber(9);
+    if (isEven) {
+        printf("even number\n");
+    } else {
+        printf("is not even number\n");
+    }
     return 0;
 }
