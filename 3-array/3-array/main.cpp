@@ -43,6 +43,24 @@ bool findTargetNumber(int arr[][4],int num,int cols,int rows) {
     return false;
 }
 
+// 青蛙跳级与斐波那契数列
+int fibonacci(int n) {
+    if (n <= 1) {
+        return 1;
+    }
+    int n1 = 0;
+    int n2 = 1;
+    int count = 0;
+    // 1 1 2 3 5
+    for (int i = 1; i <= n; i++) {
+        count = n1 + n2;
+        n1 = n2;
+        n2 = count;
+    }
+    return count;
+}
+
+
 int main() {
     int arr[7] = {2,3,4,5,2,3,1};
     findRepeatedNumber(arr, 7);
@@ -54,5 +72,8 @@ int main() {
     } else {
         printf("not exist\n");
     }
+    int num1 = 5;
+    int count = fibonacci(num1);
+    printf("%d级台阶的总共步数:%d\n",num1,count);
     return 0;
 }
