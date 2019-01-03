@@ -85,6 +85,59 @@ int numOfPositions(int num1,int num2) {
     return count;
 }
 
+//  打印1到最大的n位数
+
+bool increasecharNumber(char *number) {
+    bool isOverflow = false; // 判断是否越界
+    int carry = 0; // 进位
+    int len = (int)strlen(number);
+    for (int i = len - 1; i >=0; i--) {
+        int cur = *(number+i) - '0' + carry;
+        if (i == len - 1) {
+            cur = cur + 1;
+        }
+        if (cur == 10) {
+            if (i == 0) {
+                isOverflow = true; // 已经达到最大值
+            } else {
+                carry = 1;
+                *(number+i) = cur % 10 + '0';
+            }
+        } else {
+            carry = 0;
+            *(number+i) = cur + '0';
+        }
+    }
+    return isOverflow;
+}
+
+void printNumber(char *number) {
+    int len = (int)strlen(number);
+    int isBegin = false;
+    for (int i = 0; i < len; i++) {
+        char cur = *(number+i);
+        if (cur != '0' && !isBegin) {
+            isBegin = true;
+        }
+        if (isBegin) {
+            printf("%c",cur);
+        }
+    }
+    printf("\n");
+}
+
+void printMaxOfDigits(int n) {
+    char *number = (char *)malloc(sizeof(char) * (n+1));
+    for (int i = 0; i < n; i++) {
+        *(number+i) = '0';
+    }
+    *(number+n) = '\0';
+    while (!increasecharNumber(number)) {
+        printNumber(number);
+    }
+}
+
+
 int main() {
     int num = 9;
     int *res = convertToBinary(num);
@@ -109,5 +162,6 @@ int main() {
     }
     int positions = numOfPositions(10, 13);
     printf("change from 10 to 13 need chage %d position\n",positions);
+    printMaxOfDigits(3);
     return 0;
 }
