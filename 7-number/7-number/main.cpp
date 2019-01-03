@@ -60,6 +60,16 @@ int numof1_2(int num) {
     return count;
 }
 
+int numof1_3(int num) {
+    int n = num;
+    int count = 0;
+    while (n) {
+        n = n & (n - 1);
+        count++;
+    }
+    return count;
+}
+
 int main() {
     int num = 9;
     int *res = convertToBinary(num);
@@ -74,5 +84,7 @@ int main() {
     printf("1--%d中1的个数:%d\n",p,num1);
     int num2 = numof1_2(p);
     printf("1--%d中1的个数:%d\n",p,num2);
+    int num3 = numof1_3(p);
+    printf("1--%d中1的个数:%d\n",p,num3);
     return 0;
 }
