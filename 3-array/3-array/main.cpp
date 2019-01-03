@@ -60,6 +60,22 @@ int fibonacci(int n) {
     return count;
 }
 
+int binarySearch(int arr[], int num, int n) {
+    int low = 0;
+    int high = n - 1;
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] == num) {
+            return mid;
+        } else if (arr[mid] < num) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return -1;
+}
+
 
 int main() {
     int arr[7] = {2,3,4,5,2,3,1};
@@ -75,5 +91,8 @@ int main() {
     int num1 = 5;
     int count = fibonacci(num1);
     printf("%d级台阶的总共步数:%d\n",num1,count);
+    int search[] = {3,8,9,10,11,12};
+    int index =binarySearch(search, 8, 6);
+    printf("二分查找位置:%d\n",index);
     return 0;
 }
