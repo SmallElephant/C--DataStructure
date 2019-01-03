@@ -35,6 +35,19 @@ int countBinaryNum(int num) {
     return count;
 }
 
+int numof1(int num) {
+    int flag = 1;
+    int count = 0;
+    int n = num;
+    while (flag) {
+        if (n & flag) {
+            count++;
+        }
+        flag = flag << 1;
+    }
+    return count;
+}
+
 int main() {
     int num = 9;
     int *res = convertToBinary(num);
@@ -42,13 +55,10 @@ int main() {
         int t = *(res+i);
         printf("current value:%d\n",t);
     }
-    int p = 0;
-    scanf("%d",&p);
-    if (p < 0) {
-        printf("invalid arguements\n");
-    } else {
-        int count = countBinaryNum(p);
-        printf("%d中1的个数:%d\n",p,count);
-    }
+    int p = 9;
+    int count = countBinaryNum(p);
+    printf("%d中1的个数:%d\n",p,count);
+    int num1 = numof1(9);
+    printf("1--%d中1的个数:%d\n",p,num1);
     return 0;
 }
