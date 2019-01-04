@@ -8,6 +8,13 @@
 
 #include <iostream>
 
+void printList(int *arr, int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%d",*(arr+i));
+    }
+    printf("\n");
+}
+
 // 查找数组中重复的数字
 void findRepeatedNumber(int *arr,int len) {
     int map[len];
@@ -109,6 +116,33 @@ int minRoateArray(int arr[],int n) {
     return arr[mid];
 }
 
+// 奇数判断
+bool isOdd(int num) {
+    return num & 1;
+}
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void reorderOddEven(int *arr, int len) {
+    int p1 = 0;
+    int p2 = len-1;
+    while (p1 < p2) {
+        while (p1 < p2 && isOdd(*(arr+p1))) {
+            p1++;
+        }
+        while (p1 < p2 && !isOdd(*(arr+p2))) {
+            p2--;
+        }
+        if (p1 < p2) {
+            swap(arr+p1, arr+p2);
+        }
+    }
+}
+
 int main() {
     int arr[7] = {2,3,4,5,2,3,1};
     findRepeatedNumber(arr, 7);
@@ -132,5 +166,8 @@ int main() {
     int roateArr1[] = {1,0,1,1,1};
     int roateMin1 = minRoateArray(roateArr1, 5);
     printf("旋转数组的最小数字1:%d\n",roateMin1);
+    int order[9] = {1,2,3,4,5,6,7,8,9};
+    reorderOddEven(order, 9);
+    printList(order, 9);
     return 0;
 }
