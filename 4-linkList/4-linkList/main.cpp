@@ -28,6 +28,16 @@ void printLinkList(LinkNode *root) {
     }
 }
 
+int linkListLen(LinkNode *root)  {
+    int count = 0;
+    LinkNode *p = root;
+    while (p != NULL) {
+        p = p->next;
+        count++;
+    }
+    return count;
+}
+
 // 从尾到头打印链表
 
 void printFromTail(LinkNode *root,int len) {
@@ -94,6 +104,59 @@ LinkNode *deleteDuplicateNode(LinkNode *root) {
     return root;
 }
 
+void testDeleteDuplicate() {
+    LinkNode d1 = {'1',NULL};
+    LinkNode d2 = {'2',NULL};
+    LinkNode d3 = {'3',NULL};
+    LinkNode d4 = {'3',NULL};
+    LinkNode d5 = {'3',NULL};
+    LinkNode d6 = {'4',NULL};
+    LinkNode d7 = {'5',NULL};
+    d1.next = &d2;
+    d2.next = &d3;
+    d3.next = &d4;
+    d4.next = &d5;
+    d5.next = &d6;
+    d6.next = &d7;
+    LinkNode *del = deleteDuplicateNode(&d1);
+    printLinkList(del);
+    printf("\n");
+}
+
+// 链表的倒数第K个节点
+LinkNode *findKthNodeToTail(LinkNode *root, int k) {
+    if (root == NULL) {
+        return NULL;
+    }
+    LinkNode *res = NULL;
+    int len = linkListLen(root);
+    int steps = len - k + 1;
+    LinkNode *p = root;
+    if (steps > 0) {
+        for (int i = 0; i < steps - 1; i++) {
+            p = p->next;
+        }
+        res = p;
+    }
+    return res;
+}
+
+void testKthNode() {
+    LinkNode d1 = {'1',NULL};
+    LinkNode d2 = {'2',NULL};
+    LinkNode d3 = {'3',NULL};
+    LinkNode d4 = {'4',NULL};
+    LinkNode d5 = {'5',NULL};
+    LinkNode d6 = {'6',NULL};
+    d1.next = &d2;
+    d2.next = &d3;
+    d3.next = &d4;
+    d4.next = &d5;
+    d5.next = &d6;
+    LinkNode *res = findKthNodeToTail(&d1, 3);
+    printf("倒数结点的值:%c\n",res->data);
+}
+
 int main() {
     LinkNode node1 = {'A',NULL};
     LinkNode node2 = {'B',NULL};
@@ -113,22 +176,6 @@ int main() {
     LinkNode *root = deleteListNode2(&n1, 'D');
     printLinkList(root);
     printf("\n");
-    
-    LinkNode d1 = {'1',NULL};
-    LinkNode d2 = {'2',NULL};
-    LinkNode d3 = {'3',NULL};
-    LinkNode d4 = {'3',NULL};
-    LinkNode d5 = {'3',NULL};
-    LinkNode d6 = {'4',NULL};
-    LinkNode d7 = {'5',NULL};
-    d1.next = &d2;
-    d2.next = &d3;
-    d3.next = &d4;
-    d4.next = &d5;
-    d5.next = &d6;
-    d6.next = &d7;
-    LinkNode *del = deleteDuplicateNode(&d1);
-    printLinkList(del);
-    printf("\n");
+    testKthNode();
     return 0;
 }
