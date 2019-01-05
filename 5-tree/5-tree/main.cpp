@@ -238,6 +238,31 @@ void preOrderNonRecursive(TreeNode *root) {
     printf("\n");
 }
 
+// 二叉树的非递归中序遍历
+
+void inOrderNonRecurison(TreeNode *root) {
+    TreeNode *stack[10];
+    int top = -1;
+    int count = -1;
+    char arr[10];
+    TreeNode *p = root;
+    while (top >= 0 || p != NULL) {
+        while (p != NULL) {
+            stack[++top] = p;
+            p = p->lchild;
+        }
+        if (top >= 0) {
+            TreeNode *cur = stack[top--];
+            arr[++count] = cur->data;
+            p = cur->rchild;
+        }
+    }
+    for (int i = 0; i <= count; i++) {
+        printf("%c ",arr[i]);
+    }
+    printf("\n");
+}
+
 
 void testNexNode() {
     BTNextNode n1 = {'1',NULL,NULL};
@@ -312,6 +337,7 @@ void testOrderNonRecursion() {
     t2.rchild = &t5;
     t4.lchild = &t6;
     preOrderNonRecursive(&t1);
+    inOrderNonRecurison(&t1);
 }
 
 
