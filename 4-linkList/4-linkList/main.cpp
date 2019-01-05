@@ -190,6 +190,45 @@ LinkNode *reverseLinkNode(LinkNode *root) {
     return pre;
 }
 
+// 合并两个排序的链表
+
+LinkNode *mergeLinkNode(LinkNode *root1,LinkNode *root2) {
+    if (root1 == NULL || root2 == NULL) {
+        return NULL;
+    }
+    LinkNode *root = NULL;
+    LinkNode *p3 = root2;
+    LinkNode *p1 = root1;
+    LinkNode *p2 = root2;
+    while (p1 != NULL && p2 != NULL) {
+        LinkNode *node = p1; // 记录当前较小的结点
+        if (p1->data < p2->data) {
+            p1 = p1->next;
+        } else {
+            node = p2;
+            p2 = p2->next;
+        }
+        if (root == NULL) {
+            root = node;
+            p3 = root;
+        } else {
+            p3->next = node;
+            p3 = node;
+        }
+    }
+    while (p1 != NULL) {
+        p3->next = p1;
+        p3 = p1;
+        p1 = p1 ->next;
+    }
+    while (p2 != NULL) {
+        p3->next = p2;
+        p3 = p2;
+        p2 = p2->next;
+    }
+    return root;
+}
+
 void testKthNode() {
     LinkNode d1 = {'1',NULL};
     LinkNode d2 = {'2',NULL};
@@ -246,6 +285,23 @@ void testReverseLinkList() {
     printf("\n");
 }
 
+void testMergeLinkList() {
+    LinkNode d1 = {'1',NULL};
+    LinkNode d2 = {'2',NULL};
+    LinkNode d3 = {'3',NULL};
+    LinkNode d4 = {'4',NULL};
+    LinkNode d5 = {'5',NULL};
+    LinkNode d6 = {'6',NULL};
+    d1.next = &d2;
+    d2.next = &d3;
+    d4.next = &d5;
+    d5.next = &d6;
+    LinkNode *root = mergeLinkNode(&d1, &d4);
+    printLinkList(root);
+    printf("\n");
+}
+
+
 int main() {
     LinkNode node1 = {'A',NULL};
     LinkNode node2 = {'B',NULL};
@@ -268,5 +324,6 @@ int main() {
     testKthNode();
     testLoopLinkList();;
     testReverseLinkList();
+    testMergeLinkList();
     return 0;
 }
