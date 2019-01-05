@@ -141,6 +141,22 @@ LinkNode *findKthNodeToTail(LinkNode *root, int k) {
     return res;
 }
 
+// 快慢指针
+LinkNode *findKthNodeToTail2(LinkNode *root, int k) {
+    LinkNode *p1 = root;
+    LinkNode *p2 = root;
+    int i = 0;
+    while (p2 != NULL && i < k - 1) { // p2指针先走k步
+        p2 = p2->next;
+        i++;
+    }
+    while (p2 != NULL && p2->next != NULL) {
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return p1;
+}
+
 void testKthNode() {
     LinkNode d1 = {'1',NULL};
     LinkNode d2 = {'2',NULL};
@@ -154,7 +170,8 @@ void testKthNode() {
     d4.next = &d5;
     d5.next = &d6;
     LinkNode *res = findKthNodeToTail(&d1, 3);
-    printf("倒数结点的值:%c\n",res->data);
+    LinkNode *res2 = findKthNodeToTail2(&d1, 3);
+    printf("倒数结点的值:%c---%c\n",res->data,res2->data);
 }
 
 int main() {
