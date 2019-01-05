@@ -25,7 +25,11 @@ typedef struct BTNextNode {
     struct BTNextNode *next;
 } BTNextNode;
 
-
+typedef struct TreeNode {
+    char data;
+    struct TreeNode *lchild;
+    struct TreeNode *rchild;
+} TreeNode;
 
 void visit(TBTNode *node) {
     printf("%c",node->data);
@@ -164,6 +168,81 @@ BTNextNode *getNextNode(BTNextNode *node) {
     return p;
 }
 
+bool doesTree1HasTree2(TreeNode *root1,TreeNode *root2) {
+    if (root2==NULL) {
+        return true;
+    }
+    if (root1==NULL) {
+        return false;
+    }
+    if (root1->data != root2->data) {
+        return false;
+    }
+    return doesTree1HasTree2(root1->lchild, root2->lchild) && doesTree1HasTree2(root1->rchild, root2->rchild);
+}
+
+// 树的子结构
+bool isSubTree(TreeNode *root,TreeNode *subNode) {
+    if (root == NULL || subNode == NULL) {
+        return false;
+    }
+    bool res = false;
+    if (root->data == subNode->data) {
+        res = doesTree1HasTree2(root, subNode);
+    }
+    if (!res) {
+        res = isSubTree(root->lchild, subNode);
+    }
+    if (!res) {
+        res = isSubTree(root->rchild, subNode);
+    }
+    return res;
+}
+
+void testNexNode() {
+    BTNextNode n1 = {'1',NULL,NULL};
+    BTNextNode n2 = {'2',NULL,NULL};
+    BTNextNode n3 = {'3',NULL,NULL};
+    BTNextNode n4 = {'4',NULL,NULL};
+    BTNextNode n5 = {'5',NULL,NULL};
+    BTNextNode n6 = {'6',NULL,NULL};
+    n1.lchild = &n2;
+    n1.rchild = &n4;
+    n2.lchild = &n3;
+    n2.rchild = &n5;
+    n4.lchild = &n6;
+    n3.next = &n2;
+    n5.next = &n2;
+    n2.next = &n1;
+    n6.next = &n4;
+    n4.next = &n1;
+    BTNextNode *next = getNextNode(&n5);
+    printf("next value:%c\n",next->data);
+}
+
+void testSubTree() {
+    TreeNode t1 = {'1',NULL,NULL};
+    TreeNode t2 = {'2',NULL,NULL};
+    TreeNode t3 = {'3',NULL,NULL};
+    TreeNode t4 = {'4',NULL,NULL};
+    TreeNode t5 = {'5',NULL,NULL};
+    TreeNode t6 = {'6',NULL,NULL};
+    t1.lchild = &t2;
+    t1.rchild = &t4;
+    t2.lchild = &t3;
+    t2.rchild = &t5;
+    t4.lchild = &t6;
+    TreeNode s1 = {'4',NULL,NULL};
+    TreeNode s2 = {'6',NULL,NULL};
+    s1.lchild = &s2;
+    bool isSub = isSubTree(&t1, &s1);
+    if (isSub) {
+        printf("is sub stree\n");
+    } else {
+        printf("is not sub tree\n");
+    }
+}
+
 int main() {
     TBTNode node1 = {'1',NULL,NULL};
     TBTNode node2 = {'2',NULL,NULL};
@@ -183,23 +262,6 @@ int main() {
 //    createThread(&node1);
 //    inOrderThread(&node1);
 //    printf("\n");
-    BTNextNode n1 = {'1',NULL,NULL};
-    BTNextNode n2 = {'2',NULL,NULL};
-    BTNextNode n3 = {'3',NULL,NULL};
-    BTNextNode n4 = {'4',NULL,NULL};
-    BTNextNode n5 = {'5',NULL,NULL};
-    BTNextNode n6 = {'6',NULL,NULL};
-    n1.lchild = &n2;
-    n1.rchild = &n4;
-    n2.lchild = &n3;
-    n2.rchild = &n5;
-    n4.lchild = &n6;
-    n3.next = &n2;
-    n5.next = &n2;
-    n2.next = &n1;
-    n6.next = &n4;
-    n4.next = &n1;
-    BTNextNode *next = getNextNode(&n5);
-    printf("next value:%c\n",next->data);
+    testSubTree();
     return 0;
 }
