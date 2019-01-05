@@ -177,6 +177,19 @@ bool isLoopLiknList(LinkNode *root) {
     return isLoop;
 }
 
+// 反转链表
+LinkNode *reverseLinkNode(LinkNode *root) {
+    LinkNode *p = root;
+    LinkNode *pre = NULL;
+    while (p != NULL) {
+        LinkNode *next = p->next;
+        p->next = pre;
+        pre = p;
+        p = next;
+    }
+    return pre;
+}
+
 void testKthNode() {
     LinkNode d1 = {'1',NULL};
     LinkNode d2 = {'2',NULL};
@@ -216,6 +229,23 @@ void testLoopLinkList() {
     printf("\n");
 }
 
+void testReverseLinkList() {
+    LinkNode d1 = {'1',NULL};
+    LinkNode d2 = {'2',NULL};
+    LinkNode d3 = {'3',NULL};
+    LinkNode d4 = {'4',NULL};
+    LinkNode d5 = {'5',NULL};
+    LinkNode d6 = {'6',NULL};
+    d1.next = &d2;
+    d2.next = &d3;
+    d3.next = &d4;
+    d4.next = &d5;
+    d5.next = &d6;
+    LinkNode *root = reverseLinkNode(&d1);
+    printLinkList(root);
+    printf("\n");
+}
+
 int main() {
     LinkNode node1 = {'A',NULL};
     LinkNode node2 = {'B',NULL};
@@ -236,6 +266,7 @@ int main() {
     printLinkList(root);
     printf("\n");
     testKthNode();
-    testLoopLinkList();
+    testLoopLinkList();;
+    testReverseLinkList();
     return 0;
 }
