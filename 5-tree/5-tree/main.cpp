@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+#include <queue>
+using namespace std;
 
 #define maxsize 10
 
@@ -291,6 +293,7 @@ void postOrderNonRecursion(TreeNode *root) {
     printf("\n");
 }
 
+// 二叉树的层次遍历
 void levelOrder(TreeNode *root) {
     if (root == NULL) {
         return;
@@ -319,6 +322,32 @@ void levelOrder(TreeNode *root) {
     }
     for (int i = 0; i <= count; i++) {
         printf("%c ",arr[i]);
+    }
+    printf("\n");
+}
+
+void levelOrder2(TreeNode *root) {
+    if (root==NULL) {
+        return;
+    }
+    queue<TreeNode *> inQueue;
+    inQueue.push(root);
+    queue<TreeNode *> outQueue;
+    while (!inQueue.empty()) {
+        TreeNode *top = inQueue.front();
+        outQueue.push(top);
+        inQueue.pop();
+        if (top->lchild != NULL) {
+            inQueue.push(top->lchild);
+        }
+        if (top->rchild != NULL) {
+            inQueue.push(top->rchild);
+        }
+    }
+    while (outQueue.size()) {
+        TreeNode *top = outQueue.front();
+        printf("%c ",top->data);
+        outQueue.pop();
     }
     printf("\n");
 }
@@ -400,6 +429,7 @@ void testOrderNonRecursion() {
     inOrderNonRecurison(&t1);
     postOrderNonRecursion(&t1);
     levelOrder(&t1);
+    levelOrder2(&t1);
 }
 
 
