@@ -291,6 +291,38 @@ void postOrderNonRecursion(TreeNode *root) {
     printf("\n");
 }
 
+void levelOrder(TreeNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    TreeNode *p = root;
+    TreeNode *queue[100];
+    int queuesize = 10;
+    char arr[100];
+    char count = -1;
+    int front = -1;
+    int rear = -1;
+    rear = (rear + 1) % queuesize;
+    queue[rear] = p;
+    while (front != rear) {
+        front = (front + 1) % queuesize;
+        p = queue[front];
+        arr[++count] = p->data;
+        if (p->lchild != NULL) {
+            rear = (rear + 1) % queuesize;
+            queue[rear] = p->lchild;
+        }
+        if (p->rchild != NULL) {
+            rear = (rear + 1) % queuesize;
+            queue[rear] = p->rchild;
+        }
+    }
+    for (int i = 0; i <= count; i++) {
+        printf("%c ",arr[i]);
+    }
+    printf("\n");
+}
+
 
 void testNexNode() {
     BTNextNode n1 = {'1',NULL,NULL};
@@ -367,6 +399,7 @@ void testOrderNonRecursion() {
     preOrderNonRecursive(&t1);
     inOrderNonRecurison(&t1);
     postOrderNonRecursion(&t1);
+    levelOrder(&t1);
 }
 
 
