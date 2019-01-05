@@ -157,6 +157,26 @@ LinkNode *findKthNodeToTail2(LinkNode *root, int k) {
     return p1;
 }
 
+// 链表是否存在环路
+
+bool isLoopLiknList(LinkNode *root) {
+    bool isLoop = false;
+    LinkNode *p1 = root;
+    LinkNode *p2 = NULL;
+    if (root->next != NULL) {
+        p2 = root->next->next;
+    }
+    while (p1 != NULL && p2 != NULL) {
+        if (p1 == p2) {
+            isLoop= true;
+            break;
+        }
+        p1 = p1->next;
+        p2 = p2->next->next;
+    }
+    return isLoop;
+}
+
 void testKthNode() {
     LinkNode d1 = {'1',NULL};
     LinkNode d2 = {'2',NULL};
@@ -172,6 +192,28 @@ void testKthNode() {
     LinkNode *res = findKthNodeToTail(&d1, 3);
     LinkNode *res2 = findKthNodeToTail2(&d1, 3);
     printf("倒数结点的值:%c---%c\n",res->data,res2->data);
+}
+
+void testLoopLinkList() {
+    LinkNode d1 = {'1',NULL};
+    LinkNode d2 = {'2',NULL};
+    LinkNode d3 = {'3',NULL};
+    LinkNode d4 = {'4',NULL};
+    LinkNode d5 = {'5',NULL};
+    LinkNode d6 = {'6',NULL};
+    d1.next = &d2;
+    d2.next = &d3;
+    d3.next = &d4;
+    d4.next = &d5;
+    d5.next = &d6;
+    d6.next = &d5;
+    bool isLoop = isLoopLiknList(&d1);
+    if (isLoop) {
+        printf("链表中存在环路");
+    } else {
+        printf("链表中不存在环路");
+    }
+    printf("\n");
 }
 
 int main() {
@@ -194,5 +236,6 @@ int main() {
     printLinkList(root);
     printf("\n");
     testKthNode();
+    testLoopLinkList();
     return 0;
 }
