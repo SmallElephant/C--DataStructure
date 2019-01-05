@@ -199,6 +199,21 @@ bool isSubTree(TreeNode *root,TreeNode *subNode) {
     return res;
 }
 
+void swapTreeNode(TreeNode *node) {
+    TreeNode *lchild = node->lchild;
+    node->lchild = node->rchild;
+    node->rchild = lchild;
+}
+
+void mirrorTree(TreeNode *root) {
+    if (root==NULL) {
+        return;
+    }
+    swapTreeNode(root);
+    mirrorTree(root->lchild);
+    mirrorTree(root->rchild);
+}
+
 void testNexNode() {
     BTNextNode n1 = {'1',NULL,NULL};
     BTNextNode n2 = {'2',NULL,NULL};
@@ -243,6 +258,22 @@ void testSubTree() {
     }
 }
 
+void testMirrorTree() {
+    TreeNode t1 = {'1',NULL,NULL};
+    TreeNode t2 = {'2',NULL,NULL};
+    TreeNode t3 = {'3',NULL,NULL};
+    TreeNode t4 = {'4',NULL,NULL};
+    TreeNode t5 = {'5',NULL,NULL};
+    TreeNode t6 = {'6',NULL,NULL};
+    t1.lchild = &t2;
+    t1.rchild = &t4;
+    t2.lchild = &t3;
+    t2.rchild = &t5;
+    t4.lchild = &t6;
+    mirrorTree(&t1);
+    printf("left:%c---right:%c\n",t1.lchild->data,t1.rchild->data);
+}
+
 int main() {
     TBTNode node1 = {'1',NULL,NULL};
     TBTNode node2 = {'2',NULL,NULL};
@@ -263,5 +294,6 @@ int main() {
 //    inOrderThread(&node1);
 //    printf("\n");
     testSubTree();
+    testMirrorTree();
     return 0;
 }
