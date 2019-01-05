@@ -352,6 +352,35 @@ void levelOrder2(TreeNode *root) {
     printf("\n");
 }
 
+void levelOrder3(TreeNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    queue<TreeNode *> inQueue;
+    inQueue.push(root);
+    int levelCount = 0;
+    int printCount = 1;
+    while (inQueue.size()) {
+        TreeNode *cur = inQueue.front();
+        inQueue.pop();
+        printf("%c ",cur->data);
+        if (cur->lchild != NULL) {
+            inQueue.push(cur->lchild);
+            levelCount++;
+        }
+        if (cur->rchild != NULL) {
+            inQueue.push(cur->rchild);
+            levelCount++;
+        }
+        printCount--;
+        if (printCount == 0) {
+            printf("\n");
+            printCount = levelCount; // 打印的总数等于下一层节点的总数
+            levelCount = 0;
+        }
+    }
+}
+
 
 void testNexNode() {
     BTNextNode n1 = {'1',NULL,NULL};
@@ -430,6 +459,7 @@ void testOrderNonRecursion() {
     postOrderNonRecursion(&t1);
     levelOrder(&t1);
     levelOrder2(&t1);
+    levelOrder3(&t1);
 }
 
 
