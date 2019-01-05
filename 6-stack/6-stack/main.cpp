@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <stack>
+#include <vector>
 using namespace std;
 
 class MyQueue
@@ -34,6 +35,34 @@ private:
     stack<int> s2;
 };
 
+// 栈的压入，弹出序列
+
+bool isPopOrder(vector<int> pushV,vector<int> popV) {
+    if (pushV.size() == 0) {
+        return false;
+    }
+    vector<int> stack;
+    for (int i = 0, j = 0; i < pushV.size(); i++) {
+        stack.push_back(pushV[i]);
+        while (j < popV.size() && stack.back() == popV[j]) {
+            stack.pop_back();
+            j++;
+        }
+    }
+    return stack.empty();
+}
+
+void testPopOrder() {
+    vector<int> pushV = {1,2,3,4,5};
+    vector<int> popV = {4,5,3,2,1};
+    bool res = isPopOrder(pushV, popV);
+    if (res) {
+        printf("is pop order\n");
+    } else {
+        printf("is not pop order\n");
+    }
+}
+
 int main() {
     MyQueue queue;
     queue.push(1);
@@ -43,5 +72,6 @@ int main() {
     }
     queue.push(3);
     printf("val:%d\n",queue.pop());
+    testPopOrder();
     return 0;
 }
