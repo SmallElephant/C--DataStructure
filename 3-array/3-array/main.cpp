@@ -143,6 +143,46 @@ void reorderOddEven(int *arr, int len) {
     }
 }
 
+// 顺时针打印数组
+void printClockArr(int arr[][4],int rows,int cols) {
+    if (rows == 0 || cols == 0) {
+        return;
+    }
+    int iStart = 0; // 行的起始点
+    int iEnd = rows - 1; // 行的终点
+    int jStart = 0; // 列的起始点
+    int jEnd = cols - 1; // 列的终点
+    while (iStart < iEnd && jStart < jEnd) {
+        for (int i = jStart; i <= jEnd; i++) {
+            printf("%d ",arr[iStart][i]);
+        }
+        iStart++;
+        for (int i = iStart; i <= iEnd; i++) {
+            printf("%d ",arr[i][jEnd]);
+        }
+        jEnd--;
+        for (int i = jEnd; i >= jStart; i--) {
+            printf("%d ",arr[iEnd][i]);
+        }
+        iEnd--;
+        for (int i = iEnd; i >= iStart; i--) {
+            printf("%d ",arr[i][jStart]);
+        }
+        jStart++;
+    }
+}
+
+void testRoateArr() {
+    int roateArr[] = {3,4,5,1,2};
+    int roateMin = minRoateArray(roateArr, 5);
+    printf("旋转数组的最小数字:%d\n",roateMin);
+}
+
+void tesClockArray() {
+    int arr[][4] = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+    printClockArr(arr, 4, 4);
+}
+
 int main() {
     int arr[7] = {2,3,4,5,2,3,1};
     findRepeatedNumber(arr, 7);
@@ -160,14 +200,9 @@ int main() {
     int search[] = {3,8,9,10,11,12};
     int index =binarySearch(search, 8, 6);
     printf("二分查找位置:%d\n",index);
-    int roateArr[] = {3,4,5,1,2};
-    int roateMin = minRoateArray(roateArr, 5);
-    printf("旋转数组的最小数字:%d\n",roateMin);
-    int roateArr1[] = {1,0,1,1,1};
-    int roateMin1 = minRoateArray(roateArr1, 5);
-    printf("旋转数组的最小数字1:%d\n",roateMin1);
     int order[9] = {1,2,3,4,5,6,7,8,9};
     reorderOddEven(order, 9);
     printList(order, 9);
+    tesClockArray();
     return 0;
 }
