@@ -205,6 +205,7 @@ void swapTreeNode(TreeNode *node) {
     node->rchild = lchild;
 }
 
+// 二叉树的镜像
 void mirrorTree(TreeNode *root) {
     if (root==NULL) {
         return;
@@ -213,6 +214,30 @@ void mirrorTree(TreeNode *root) {
     mirrorTree(root->lchild);
     mirrorTree(root->rchild);
 }
+
+// 二叉树的先序非递归遍历
+void preOrderNonRecursive(TreeNode *root) {
+    TreeNode *stack[10];
+    int arr[10];
+    int i = 0;
+    int top = -1;
+    stack[++top] = root;
+    while (top >= 0) {
+        TreeNode *cur = stack[top--];
+        arr[i++] = cur->data;
+        if (cur->rchild != NULL) {
+            stack[++top] = cur->rchild;
+        }
+        if (cur->lchild != NULL) {
+            stack[++top] = cur->lchild;
+        }
+    }
+    for (int j = 0;j <= i; j++) {
+        printf("%c ",arr[j]);
+    }
+    printf("\n");
+}
+
 
 void testNexNode() {
     BTNextNode n1 = {'1',NULL,NULL};
@@ -274,6 +299,22 @@ void testMirrorTree() {
     printf("left:%c---right:%c\n",t1.lchild->data,t1.rchild->data);
 }
 
+void testOrderNonRecursion() {
+    TreeNode t1 = {'1',NULL,NULL};
+    TreeNode t2 = {'2',NULL,NULL};
+    TreeNode t3 = {'3',NULL,NULL};
+    TreeNode t4 = {'4',NULL,NULL};
+    TreeNode t5 = {'5',NULL,NULL};
+    TreeNode t6 = {'6',NULL,NULL};
+    t1.lchild = &t2;
+    t1.rchild = &t4;
+    t2.lchild = &t3;
+    t2.rchild = &t5;
+    t4.lchild = &t6;
+    preOrderNonRecursive(&t1);
+}
+
+
 int main() {
     TBTNode node1 = {'1',NULL,NULL};
     TBTNode node2 = {'2',NULL,NULL};
@@ -295,5 +336,6 @@ int main() {
 //    printf("\n");
     testSubTree();
     testMirrorTree();
+    testOrderNonRecursion();
     return 0;
 }
