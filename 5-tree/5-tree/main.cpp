@@ -263,6 +263,34 @@ void inOrderNonRecurison(TreeNode *root) {
     printf("\n");
 }
 
+//二叉树的后序遍历
+void postOrderNonRecursion(TreeNode *root) {
+    if (root==NULL) {
+        return;
+    }
+    int top1 = -1;
+    int top2 = -1;
+    TreeNode *stack1[10];
+    TreeNode *stack2[10];
+    TreeNode *p = root;
+    stack1[++top1] = root;
+    while (top1 >= 0) {
+        p = stack1[top1--];
+        stack2[++top2] = p;
+        if (p->lchild != NULL) {
+            stack1[++top1] = p->lchild;
+        }
+        if (p->rchild != NULL) {
+            stack1[++top1] = p->rchild;
+        }
+    }
+    for (int i = top2; i>= 0; i--) {
+        TreeNode *node = stack2[top2--];
+        printf("%c ",node->data);
+    }
+    printf("\n");
+}
+
 
 void testNexNode() {
     BTNextNode n1 = {'1',NULL,NULL};
@@ -338,6 +366,7 @@ void testOrderNonRecursion() {
     t4.lchild = &t6;
     preOrderNonRecursive(&t1);
     inOrderNonRecurison(&t1);
+    postOrderNonRecursion(&t1);
 }
 
 
