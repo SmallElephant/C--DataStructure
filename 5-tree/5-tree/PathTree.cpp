@@ -13,32 +13,38 @@ using namespace std;
 class PathTree {
     
 public:
-    
+    int top = 0;
+    int target = 11;
     void printPath(TreeNode *root) {
-        int stack[10];
-        printTreePath(root, stack, 0);
+        char paths[10];
+        printTreePath(root, paths);
     }
     
-    void printTreePath(TreeNode *root,int *stack, int len) {
+    void printTreePath(TreeNode *root,char paths[]) {
         if (root == NULL) {
             return;
         }
-        *(stack+len) = root->data;
-        len++;
+        paths[top++] = root->data;
         if (root->lchild == NULL && root->rchild == NULL) {
-            printStack(stack, len);
-            len--;
+            print(paths);
         } else {
-            printTreePath(root->lchild, stack, len);
-            printTreePath(root->rchild, stack, len);
+            printTreePath(root->lchild, paths);
+            printTreePath(root->rchild, paths);
         }
+        top--;
     }
     
-    void printStack(int *stack,int len) {
-        for (int i = 0; i < len; i++) {
-            printf("%c ",*(stack+i));
+    void print(char paths[]) {
+        int sum = 0;
+        for (int i = 0; i < top; i++) {
+            sum += paths[i] - '0';
         }
-        printf("\n");
+        if (sum == target) {
+            for (int i = 0; i < top; i++) {
+                 printf("%c ",paths[i]);
+            }
+            printf("\n");
+        }
     }
     
     void test() {
@@ -46,7 +52,7 @@ public:
         TreeNode t2 = {'2',NULL,NULL};
         TreeNode t3 = {'3',NULL,NULL};
         TreeNode t4 = {'4',NULL,NULL};
-        TreeNode t5 = {'5',NULL,NULL};
+        TreeNode t5 = {'8',NULL,NULL};
         TreeNode t6 = {'6',NULL,NULL};
         t1.lchild = &t2;
         t1.rchild = &t4;
