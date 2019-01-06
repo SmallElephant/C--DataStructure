@@ -10,6 +10,8 @@
 		DA7E4CE021DA5F55000FA99B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4CDF21DA5F55000FA99B /* main.cpp */; };
 		DA7E4CE821DB93E6000FA99B /* tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4CE621DB93E6000FA99B /* tree.cpp */; };
 		DA7E4CEB21DB94D6000FA99B /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4CE921DB94D6000FA99B /* thread.cpp */; };
+		DA7E4D0221E1A03D000FA99B /* MyTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0121E1A03D000FA99B /* MyTree.cpp */; };
+		DA7E4D0421E1A092000FA99B /* CommonStruct.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0321E1A092000FA99B /* CommonStruct.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,8 @@
 		DA7E4CE721DB93E6000FA99B /* tree.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tree.hpp; sourceTree = "<group>"; };
 		DA7E4CE921DB94D6000FA99B /* thread.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = thread.cpp; sourceTree = "<group>"; };
 		DA7E4CEA21DB94D6000FA99B /* thread.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = thread.hpp; sourceTree = "<group>"; };
+		DA7E4D0121E1A03D000FA99B /* MyTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MyTree.cpp; sourceTree = "<group>"; };
+		DA7E4D0321E1A092000FA99B /* CommonStruct.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CommonStruct.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 				DA7E4CE721DB93E6000FA99B /* tree.hpp */,
 				DA7E4CE921DB94D6000FA99B /* thread.cpp */,
 				DA7E4CEA21DB94D6000FA99B /* thread.hpp */,
+				DA7E4D0121E1A03D000FA99B /* MyTree.cpp */,
+				DA7E4D0321E1A092000FA99B /* CommonStruct.cpp */,
 			);
 			path = "5-tree";
 			sourceTree = "<group>";
@@ -129,7 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7E4CE021DA5F55000FA99B /* main.cpp in Sources */,
+				DA7E4D0221E1A03D000FA99B /* MyTree.cpp in Sources */,
 				DA7E4CEB21DB94D6000FA99B /* thread.cpp in Sources */,
+				DA7E4D0421E1A092000FA99B /* CommonStruct.cpp in Sources */,
 				DA7E4CE821DB93E6000FA99B /* tree.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

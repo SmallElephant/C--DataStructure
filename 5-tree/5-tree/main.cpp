@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <queue>
+#include "MyTree.cpp"
 using namespace std;
 
 #define maxsize 10
@@ -27,11 +28,6 @@ typedef struct BTNextNode {
     struct BTNextNode *next;
 } BTNextNode;
 
-typedef struct TreeNode {
-    char data;
-    struct TreeNode *lchild;
-    struct TreeNode *rchild;
-} TreeNode;
 
 void visit(TBTNode *node) {
     printf("%c",node->data);
@@ -485,5 +481,7 @@ int main() {
     testSubTree();
     testMirrorTree();
     testOrderNonRecursion();
+    Symmetric symmertic;
+    symmertic.test();
     return 0;
 }
