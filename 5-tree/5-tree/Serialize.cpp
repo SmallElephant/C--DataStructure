@@ -24,6 +24,20 @@ public:
         serialize(root->lchild);
         serialize(root->rchild);
     }
+    int index = 0;
+    TreeNode *deserialize(char *p) {
+        char cur = *(p+index);
+        if (cur == '$') {
+            return NULL;
+        }
+        TreeNode *root = new TreeNode();
+        root->data = cur;
+        index++;
+        root->lchild = deserialize(p);
+        index++;
+        root->rchild = deserialize(p);
+        return root;
+    }
     
     void test() {
         TreeNode t1 = {'1',NULL,NULL};
@@ -35,9 +49,20 @@ public:
         t1.lchild = &t2;
         t1.rchild = &t3;
         t2.lchild = &t4;
-        t3.rchild = &t5;
-        t3.lchild = &t6;
+        t3.lchild = &t5;
+        t3.rchild = &t6;
         serialize(&t1);
         cout<<str<<endl;
+        
+        char *desc = (char *)malloc(sizeof(char) * str.size());
+        int len = 0;
+        for (int i = 0; i < str.size(); i++) {
+            if (str[i] != ',') {
+                *(desc+len) = str[i];
+                len++;
+            }
+        }
+        TreeNode *root = deserialize(desc);
+        printf("%c\n",root->data);
     }
 };
