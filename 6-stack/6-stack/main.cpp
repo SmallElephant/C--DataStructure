@@ -9,6 +9,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include "MinStack.cpp"
 using namespace std;
 
 class MyQueue
@@ -63,6 +64,19 @@ void testPopOrder() {
     }
 }
 
+void tesMinStack() {
+    MinStack minStack;
+    minStack.push(3);
+    minStack.push(4);
+    minStack.push(2);
+    minStack.push(1);
+    printf("min:%d\n",minStack.min());
+    minStack.pop();
+    printf("min:%d\n",minStack.min());
+    minStack.push(0);
+    printf("min:%d\n",minStack.min());
+}
+
 int main() {
     MyQueue queue;
     queue.push(1);
@@ -73,5 +87,6 @@ int main() {
     queue.push(3);
     printf("val:%d\n",queue.pop());
     testPopOrder();
+    tesMinStack();
     return 0;
 }
