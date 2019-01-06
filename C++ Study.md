@@ -38,6 +38,12 @@ len = str.length();
  
 ## malloc 内存分配
 
+C语言中需要导入头文件:
+
+```
+#include <stdlib.h>
+```
+
 ```
     char *res = (char *)malloc(sizeof(char) * len);
     char res[maxsize];
