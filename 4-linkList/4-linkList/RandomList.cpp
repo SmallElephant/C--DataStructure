@@ -36,7 +36,7 @@ public:
         while (randomHead != NULL) {
             RandomListNode *clone = randomHead->next;
             RandomListNode *random = randomHead->random;
-            if (clone != NULL && random != NULL) {
+            if (random != NULL) {
                 clone->random = random->next;
             }
             randomHead = clone->next;
@@ -44,14 +44,9 @@ public:
         // 3.断开结点连接
         RandomListNode *head1 = pHead;
         RandomListNode *root = pHead->next;
-        while (head1 != NULL) {
+        while (head1->next != NULL) {
             RandomListNode *next = head1->next;
-            if (next != NULL) {
-                next = next->next;
-                if (next != NULL) {
-                    head1->next = next->next;
-                }
-            }
+            head1->next = next->next;
             head1 = next;
         }
         return root;
