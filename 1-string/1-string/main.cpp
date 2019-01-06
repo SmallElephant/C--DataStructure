@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include "Permutation.cpp"
 using namespace std;
 
 // 字符串反转
@@ -108,5 +109,7 @@ int main() {
     for (int i = 0; i < count; i++) {
         printf("%d\n",res1[i]);
     }
+    Permute permute;
+    permute.test();
     return 0;
 }
