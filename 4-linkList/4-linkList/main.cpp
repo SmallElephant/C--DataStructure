@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include "RandomList.cpp"
 
 typedef struct LinkNode {
     char data;
@@ -325,5 +326,7 @@ int main() {
     testLoopLinkList();;
     testReverseLinkList();
     testMergeLinkList();
+    RandomList randomList;
+    randomList.test();
     return 0;
 }
