@@ -11,6 +11,7 @@
 #include "MyTree.cpp"
 #include "TreeOrder.cpp"
 #include "PathTree.cpp"
+#include "ConvertTree.cpp"
 using namespace std;
 
 #define maxsize 10
@@ -489,5 +490,7 @@ int main() {
     order.test();
     PathTree pathTree;
     pathTree.test();
+    ConvertTree convert;
+    convert.test();
     return 0;
 }

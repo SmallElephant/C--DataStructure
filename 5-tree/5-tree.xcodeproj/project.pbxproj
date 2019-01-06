@@ -13,6 +13,7 @@
 		DA7E4D0221E1A03D000FA99B /* MyTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0121E1A03D000FA99B /* MyTree.cpp */; };
 		DA7E4D0621E1A677000FA99B /* TreeOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0521E1A677000FA99B /* TreeOrder.cpp */; };
 		DA7E4D0B21E1B9BA000FA99B /* PathTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */; };
+		DA7E4D3521E22C2E000FA99B /* ConvertTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,6 +39,7 @@
 		DA7E4D0521E1A677000FA99B /* TreeOrder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TreeOrder.cpp; sourceTree = "<group>"; };
 		DA7E4D0821E1A6FE000FA99B /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
 		DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PathTree.cpp; sourceTree = "<group>"; };
+		DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConvertTree.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				DA7E4D0521E1A677000FA99B /* TreeOrder.cpp */,
 				DA7E4D0821E1A6FE000FA99B /* Common.hpp */,
 				DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */,
+				DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */,
 			);
 			path = "5-tree";
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7E4D3521E22C2E000FA99B /* ConvertTree.cpp in Sources */,
 				DA7E4D0621E1A677000FA99B /* TreeOrder.cpp in Sources */,
 				DA7E4CE021DA5F55000FA99B /* main.cpp in Sources */,
 				DA7E4D0B21E1B9BA000FA99B /* PathTree.cpp in Sources */,
