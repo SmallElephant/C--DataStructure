@@ -9,6 +9,7 @@
 #include <iostream>
 #include <queue>
 #include "MyTree.cpp"
+#include "TreeOrder.cpp"
 using namespace std;
 
 #define maxsize 10
@@ -483,5 +484,7 @@ int main() {
     testOrderNonRecursion();
     Symmetric symmertic;
     symmertic.test();
+    TreeOrder order;
+    order.test();
     return 0;
 }

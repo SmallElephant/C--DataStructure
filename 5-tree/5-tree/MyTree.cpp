@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "CommonStruct.cpp"
+#include "Common.hpp"
 using namespace std;
 
 class Symmetric {
