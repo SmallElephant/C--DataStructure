@@ -10,6 +10,7 @@
 #include <queue>
 #include "MyTree.cpp"
 #include "TreeOrder.cpp"
+#include "PathTree.cpp"
 using namespace std;
 
 #define maxsize 10
@@ -486,5 +487,7 @@ int main() {
     symmertic.test();
     TreeOrder order;
     order.test();
+    PathTree pathTree;
+    pathTree.test();
     return 0;
 }
