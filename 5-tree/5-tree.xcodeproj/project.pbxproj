@@ -14,6 +14,7 @@
 		DA7E4D0621E1A677000FA99B /* TreeOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0521E1A677000FA99B /* TreeOrder.cpp */; };
 		DA7E4D0B21E1B9BA000FA99B /* PathTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */; };
 		DA7E4D3521E22C2E000FA99B /* ConvertTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */; };
+		DA7E4D3721E23FD3000FA99B /* Serialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3621E23FD3000FA99B /* Serialize.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,7 @@
 		DA7E4D0821E1A6FE000FA99B /* Common.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Common.hpp; sourceTree = "<group>"; };
 		DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PathTree.cpp; sourceTree = "<group>"; };
 		DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConvertTree.cpp; sourceTree = "<group>"; };
+		DA7E4D3621E23FD3000FA99B /* Serialize.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Serialize.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				DA7E4D0821E1A6FE000FA99B /* Common.hpp */,
 				DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */,
 				DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */,
+				DA7E4D3621E23FD3000FA99B /* Serialize.cpp */,
 			);
 			path = "5-tree";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				DA7E4D0B21E1B9BA000FA99B /* PathTree.cpp in Sources */,
 				DA7E4D0221E1A03D000FA99B /* MyTree.cpp in Sources */,
 				DA7E4CEB21DB94D6000FA99B /* thread.cpp in Sources */,
+				DA7E4D3721E23FD3000FA99B /* Serialize.cpp in Sources */,
 				DA7E4CE821DB93E6000FA99B /* tree.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

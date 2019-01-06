@@ -12,6 +12,7 @@
 #include "TreeOrder.cpp"
 #include "PathTree.cpp"
 #include "ConvertTree.cpp"
+#include "Serialize.cpp"
 using namespace std;
 
 #define maxsize 10
@@ -492,5 +493,7 @@ int main() {
     pathTree.test();
     ConvertTree convert;
     convert.test();
+    Serialize serialize;
+    serialize.test();
     return 0;
 }
