@@ -58,3 +58,10 @@ C语言中需要导入头文件:
 ```
 TBNode *list;
 ```
+
+## 字符串拼接
+
+```
+string s;
+s.push_back(char);
+```
