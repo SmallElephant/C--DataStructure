@@ -39,10 +39,9 @@ public:
         if (start >= end) {
             return start;
         }
-        int pivot = arr[end];
+        int pivot = arr[start];
         int left = start;
         int right = end;
-        printArr(arr, 10);
         while (left < right) {
             while (left < right && arr[left] <= pivot) {
                 left++;
@@ -52,23 +51,18 @@ public:
             }
             if (left < right) {
                 swap(&arr[left], &arr[right]);
-                printArr(arr, 10);
             }
         }
+        arr[left] = arr[right];
+        arr[right] = pivot;
         printArr(arr, 10);
-        swap(&arr[left], &arr[end]);
-        printArr(arr, 10);
-        return left;
+        return right;
     }
     
     int partition2(int arr[],int start,int end) {
-        if (start >= end) {
-            return start;
-        }
         int pivot = arr[end];
         int left = start;
-        int right = end;
-        printArr(arr, 10);
+        int right = end-1;
         while (left < right) {
             while (left < right && arr[left] <= pivot) {
                 left++;
@@ -76,12 +70,15 @@ public:
             while (left < right && arr[right] > pivot) {
                 right--;
             }
-            swap(&arr[left], &arr[right]);
-            printArr(arr, 10);
+            if (left < right) {
+                 swap(&arr[left], &arr[right]);
+            }
         }
-        printArr(arr, 10);
-        swap(&arr[left], &arr[end]);
-        printArr(arr, 10);
+        if (arr[left] >= arr[end]) {
+            swap(&arr[left], &arr[end]);
+        } else {
+            left++;
+        }
         return left;
     }
     
@@ -94,6 +91,15 @@ public:
         quickSort(arr, mid+1, end);
     }
     
+    void quickSort2(int arr[],int start,int end) {
+        if (start > end) {
+            return;
+        }
+        int mid = partition2(arr, start, end);
+        quickSort2(arr, start, mid-1);
+        quickSort2(arr, mid+1, end);
+    }
+    
     void test() {
         int arr[] = {3,4,1,2,8,10,5,6,7,9};
         bubbleSort(arr, 10);
@@ -102,6 +108,10 @@ public:
         printf("快速排序之后的结果:\n");
         quickSort(quickArr, 0, 9);
         printArr(quickArr, 10);
+        int quickArr2[] = {3,4,1,2,8,10,5,6,7,9};
+        printf("快速排序之后的结果2:\n");
+        quickSort2(quickArr2, 0, 9);
+        printArr(quickArr2, 10);
     }
     
 };
