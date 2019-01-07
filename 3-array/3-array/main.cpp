@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+#include "Search.cpp"
+#include "Sort.cpp"
 
 void printList(int *arr, int len) {
     for (int i = 0; i < len; i++) {
@@ -204,5 +206,10 @@ int main() {
     reorderOddEven(order, 9);
     printList(order, 9);
     tesClockArray();
+    printf("\n");
+    Search searchData;
+    searchData.test();
+    Sort sort;
+    sort.test();
     return 0;
 }
