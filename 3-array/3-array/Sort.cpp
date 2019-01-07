@@ -35,10 +35,73 @@ public:
         }
     }
     
+    int partition(int arr[],int start,int end) {
+        if (start >= end) {
+            return start;
+        }
+        int pivot = arr[end];
+        int left = start;
+        int right = end;
+        printArr(arr, 10);
+        while (left < right) {
+            while (left < right && arr[left] <= pivot) {
+                left++;
+            }
+            while (left < right && arr[right] > pivot) {
+                right--;
+            }
+            if (left < right) {
+                swap(&arr[left], &arr[right]);
+                printArr(arr, 10);
+            }
+        }
+        printArr(arr, 10);
+        swap(&arr[left], &arr[end]);
+        printArr(arr, 10);
+        return left;
+    }
+    
+    int partition2(int arr[],int start,int end) {
+        if (start >= end) {
+            return start;
+        }
+        int pivot = arr[end];
+        int left = start;
+        int right = end;
+        printArr(arr, 10);
+        while (left < right) {
+            while (left < right && arr[left] <= pivot) {
+                left++;
+            }
+            while (left < right && arr[right] > pivot) {
+                right--;
+            }
+            swap(&arr[left], &arr[right]);
+            printArr(arr, 10);
+        }
+        printArr(arr, 10);
+        swap(&arr[left], &arr[end]);
+        printArr(arr, 10);
+        return left;
+    }
+    
+    void quickSort(int arr[],int start,int end) {
+        if (start > end) {
+            return;
+        }
+        int mid = partition(arr, start, end);
+        quickSort(arr, start, mid-1);
+        quickSort(arr, mid+1, end);
+    }
+    
     void test() {
         int arr[] = {3,4,1,2,8,10,5,6,7,9};
         bubbleSort(arr, 10);
         printArr(arr, 10);
+        int quickArr[] = {3,4,1,2,8,10,5,6,7,9};
+        printf("快速排序之后的结果:\n");
+        quickSort(quickArr, 0, 9);
+        printArr(quickArr, 10);
     }
     
 };
