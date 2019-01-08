@@ -89,6 +89,19 @@ public:
         quickSort2(arr, mid+1, end);
     }
     
+    void insertSort(int arr[],int n) {
+        if (n <= 0) {
+            return;
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j > 0; j--) {
+                if (arr[j] < arr[j-1]) {
+                    swap(&arr[j], &arr[j-1]);
+                }
+            }
+        }
+    }
+    
     void test() {
         int arr[] = {3,4,1,2,8,10,5,6,7,9};
         bubbleSort(arr, 10);
@@ -101,6 +114,10 @@ public:
         printf("快速排序之后的结果2:\n");
         quickSort2(quickArr2, 0, 9);
         printArr(quickArr2, 10);
+        int insertArr[] = {3,4,1,2,8,10,5,6,7,9};
+        printf("插入排序之后的结果:\n");
+        insertSort(insertArr, 10);
+        printArr(insertArr, 10);
     }
     
 };
