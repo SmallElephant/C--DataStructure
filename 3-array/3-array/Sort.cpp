@@ -102,6 +102,36 @@ public:
         }
     }
     
+    // 构建最大堆
+    void max_heapify(int arr[],int start,int end) {
+        int dad = start;
+        int son = start * 2 + 1;
+        while (son <= end) {
+            if (son+1 <= end && arr[son] < arr[son+1]) { // 左右孩子结点中找到最大的结点
+                son++;
+            }
+            if (arr[dad] > arr[son]) {
+                return;
+            } else {
+                swap(&arr[dad], &arr[son]);
+                dad = son;
+                son = dad * 2 + 1;
+            }
+        }
+    }
+    
+    void heapSort(int arr[],int n) {
+        for (int i = n/2 - 1; i >= 0; i--) { // 构造最大堆
+            max_heapify(arr, i, n);
+        }
+        printArr(arr, n);
+        for (int i = n - 1; i>= 0 ; i--) {
+            swap(&arr[0], &arr[i]);
+            max_heapify(arr, 0, i-1);
+        }
+        printArr(arr, n);
+    }
+    
     void test() {
         int arr[] = {3,4,1,2,8,10,5,6,7,9};
         bubbleSort(arr, 10);
@@ -118,6 +148,10 @@ public:
         printf("插入排序之后的结果:\n");
         insertSort(insertArr, 10);
         printArr(insertArr, 10);
+        int heapArr[] = { 3, 5, 3, 0, 8, 6, 1, 5, 8, 6, 2, 4, 9, 4, 7, 0, 1, 8, 9, 7, 3, 1, 2, 5, 9, 7, 4, 0, 2, 6 };
+        int len = (int)sizeof(heapArr) / sizeof(*heapArr);
+        printf("堆排序之后的结果:\n");
+        heapSort(heapArr, len);
     }
     
 };
