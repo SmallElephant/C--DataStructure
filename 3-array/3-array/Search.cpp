@@ -40,6 +40,22 @@ public:
         return c > n / 2 ? num : -1;
     }
     
+    int binarySearch(int arr[], int num, int n) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (arr[mid] == num) {
+                return mid;
+            } else if (arr[mid] < num) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+        return -1;
+    }
+    
     void test() {
         int arr[] = {1,2,3,4,5,6,1,1,1};
         int val = findMoreHalfNumber(arr, 9);
@@ -48,6 +64,9 @@ public:
         } else {
             printf("没有超过一半的数字\n");
         }
+        int search[] = {3,8,9,10,11,12};
+        int index =binarySearch(search, 8, 6);
+        printf("二分查找位置:%d\n",index);
     }
 };
 
