@@ -36,30 +36,6 @@ public:
     }
     
     int partition(int arr[],int start,int end) {
-        if (start >= end) {
-            return start;
-        }
-        int pivot = arr[start];
-        int left = start;
-        int right = end;
-        while (left < right) {
-            while (left < right && arr[left] <= pivot) {
-                left++;
-            }
-            while (left < right && arr[right] > pivot) {
-                right--;
-            }
-            if (left < right) {
-                swap(&arr[left], &arr[right]);
-            }
-        }
-        arr[left] = arr[right];
-        arr[right] = pivot;
-        printArr(arr, 10);
-        return right;
-    }
-    
-    int partition2(int arr[],int start,int end) {
         int pivot = arr[end];
         int left = start;
         int right = end-1;
@@ -80,6 +56,19 @@ public:
             left++;
         }
         return left;
+    }
+    
+    int partition2(int arr[],int start,int end) {
+        int sortIndex = start;
+        int pivot = arr[end];
+        for (int i = start; i < end; i++) {
+            if (arr[i] < pivot) {
+                swap(&arr[sortIndex], &arr[i]);
+                sortIndex++;
+            }
+        }
+        swap(&arr[sortIndex], &arr[end]);
+        return sortIndex;
     }
     
     void quickSort(int arr[],int start,int end) {
