@@ -102,6 +102,22 @@ public:
         }
     }
     
+    // 选择排序
+    void selectSort(int arr[],int n) {
+        for (int i = 0; i < n; i++) {
+            int last= n - i - 1;
+            int max = arr[last];
+            int maxIndex = last;
+            for (int j = 0; j < last; j++) {
+                if (arr[j] > max) {
+                    maxIndex = j;
+                    max = arr[j];
+                }
+            }
+            swap(&arr[maxIndex], &arr[last]);
+        }
+    }
+    
     // 构建最大堆
     void max_heapify(int arr[],int start,int end) {
         int dad = start;
@@ -152,6 +168,10 @@ public:
         int len = (int)sizeof(heapArr) / sizeof(*heapArr);
         printf("堆排序之后的结果:\n");
         heapSort(heapArr, len);
+        int selectArr[] = {3,4,1,2,8,10,5,6,7,9};
+        printf("选择排序之后的结果:\n");
+        selectSort(selectArr, 10);
+        printArr(selectArr, 10);
     }
     
 };
