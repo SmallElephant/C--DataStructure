@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include "Search.cpp"
 
 #define maxsize 100
 int *convertToBinary(int num) {
@@ -163,5 +164,7 @@ int main() {
     int positions = numOfPositions(10, 13);
     printf("change from 10 to 13 need chage %d position\n",positions);
     printMaxOfDigits(3);
+    Search search;
+    search.test();
     return 0;
 }
