@@ -11,6 +11,7 @@
 		DA7E4CBA21D9B035000FA99B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4CB921D9B035000FA99B /* main.cpp */; };
 		DA7E4D3B21E38C81000FA99B /* Search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3A21E38C81000FA99B /* Search.cpp */; };
 		DA7E4D3D21E3953B000FA99B /* Sort.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3C21E3953B000FA99B /* Sort.cpp */; };
+		DA7E4D4121E89B93000FA99B /* Permuate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D4021E89B93000FA99B /* Permuate.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		DA7E4CB921D9B035000FA99B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DA7E4D3A21E38C81000FA99B /* Search.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Search.cpp; sourceTree = "<group>"; };
 		DA7E4D3C21E3953B000FA99B /* Sort.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Sort.cpp; sourceTree = "<group>"; };
+		DA7E4D4021E89B93000FA99B /* Permuate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Permuate.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				DA7E4D3A21E38C81000FA99B /* Search.cpp */,
 				DA7E4D3C21E3953B000FA99B /* Sort.cpp */,
 				A8055E9E21E4C6DF00CB4992 /* Sum.cpp */,
+				DA7E4D4021E89B93000FA99B /* Permuate.cpp */,
 			);
 			path = "3-array";
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7E4D3D21E3953B000FA99B /* Sort.cpp in Sources */,
+				DA7E4D4121E89B93000FA99B /* Permuate.cpp in Sources */,
 				A8055E9F21E4C6DF00CB4992 /* Sum.cpp in Sources */,
 				DA7E4CBA21D9B035000FA99B /* main.cpp in Sources */,
 				DA7E4D3B21E38C81000FA99B /* Search.cpp in Sources */,

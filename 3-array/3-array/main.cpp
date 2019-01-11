@@ -10,6 +10,7 @@
 #include "Search.cpp"
 #include "Sort.cpp"
 #include "Sum.cpp"
+#include "Permuate.cpp"
 
 void printList(int *arr, int len) {
     for (int i = 0; i < len; i++) {
@@ -151,5 +152,7 @@ int main() {
     sum.test();
     Search searchData;
     searchData.test();
+    Permuate permuate;
+    permuate.test();
     return 0;
 }

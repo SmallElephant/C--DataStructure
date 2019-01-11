@@ -65,3 +65,9 @@ TBNode *list;
 string s;
 s.push_back(char);
 ```
+
+## 二维数组定义
+
+```
+int *res[100];
+```
