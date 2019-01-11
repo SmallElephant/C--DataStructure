@@ -71,3 +71,16 @@ s.push_back(char);
 ```
 int *res[100];
 ```
+
+## 字符串与数字转换
+
+```
+        char str[100];
+        strcpy(str, "");
+        for (int i = 0; i < n; i++) {
+            char nsum[10];
+            sprintf(nsum, "%d", arr[i]);
+            strcat(str, nsum);
+        }
+        return atoi(str);
+```

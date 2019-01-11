@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+//#include <stdio.h>
+using namespace std;
 
 class Permuate {
     
@@ -26,6 +28,20 @@ public:
             printf("%d",arr[i]);
         }
         printf("\n");
+    }
+    
+    int convertToNumber(int arr[],int n) {
+        if (arr == NULL) {
+            return -1;
+        }
+        char str[100];
+        strcpy(str, "");
+        for (int i = 0; i < n; i++) {
+            char nsum[10];
+            sprintf(nsum, "%d", arr[i]);
+            strcat(str, nsum);
+        }
+        return atoi(str);
     }
     
     void permuate(int arr[],int start,int len) {
@@ -49,9 +65,14 @@ public:
         printf("全排列开始:\n");
         permuate(arr, 0, 3);
         printf("全排列结束:\n");
-        for (int i = 0; i <= index; i++) {
-            printArr(res[i], 3);
+        int min = convertToNumber(res[0], 3);
+        for (int i = 0; i < index; i++) {
+            int num = convertToNumber(res[i], 3);
+            if (num <= min) {
+                min = num;
+            }
         }
+        printf("数组全排列最小的值:%d\n",min);
     }
     
 private:

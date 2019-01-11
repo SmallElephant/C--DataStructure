@@ -7,16 +7,15 @@
 //
 
 #include <stdio.h>
+//#include <stdlib.h>
 
-void swap(int *a, int *b)
-{
+void swap(int *a, int *b) {
     int t = *a;
     *a = *b;
     *b= t;
 }
 
-void swapchar(char *a, char *b)
-{
+void swapchar(char *a, char *b) {
     char t = *a;
     *a = *b;
     *b= t;
@@ -33,5 +32,8 @@ int main() {
         swapchar(&s[i], &s[len-i-1]);
     }
     printf("%s\n",s);
+    char str[100];
+    sprintf(str, "%d", 42);
+    printf("转换之后的结果:%s\n",str);
     return 0;
 }
