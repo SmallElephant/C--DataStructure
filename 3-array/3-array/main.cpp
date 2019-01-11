@@ -11,6 +11,7 @@
 #include "Sort.cpp"
 #include "Sum.cpp"
 #include "Permuate.cpp"
+#include "Reverse.cpp"
 
 void printList(int *arr, int len) {
     for (int i = 0; i < len; i++) {
@@ -154,5 +155,7 @@ int main() {
     searchData.test();
     Permuate permuate;
     permuate.test();
+    Reverse reverse;
+    reverse.test();
     return 0;
 }
