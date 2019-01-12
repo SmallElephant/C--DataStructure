@@ -23,6 +23,8 @@ public:
         return res;
     }
     
+    
+    
     // 数组中的逆序对
     void test() {
         int arr[] = {7,5,6,4};

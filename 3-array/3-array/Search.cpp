@@ -121,6 +121,32 @@ public:
         return count;
     }
     
+    int findFirstBitIs1(int num) {
+        int pos = 0;
+        int tmp = 1 << pos;
+        while (num & tmp) {
+            pos++;
+            tmp = 1 << pos;
+        }
+        return pos;
+    }
+    
+    bool isBit1(int num,int pos) {
+        int tmp = 1 << pos;
+        return num & tmp;
+    }
+    
+    void findNumberOfData(int arr[],int n) {
+        if (n <= 0) {
+            return;
+        }
+        int res = arr[0];
+        for (int i = 1; i < n; i++) {
+            res = res ^ arr[i];
+        }
+        printf("数组中异或单独的数字:%d\n",res);
+    }
+    
     void test() {
 //        int arr[7] = {2,3,4,5,2,3,1};
 //        findRepeatedNumber(arr, 7);
@@ -147,6 +173,8 @@ public:
         int arr[] = {1,2,3,3,3,3,5,6};
         int nums = getNumOfK(arr, 8, 3);
         printf("出现的次数:%d\n",nums);
+        int repeate[] = {1,1,2,2,3,4,3};
+        findNumberOfData(repeate, 7);
     }
 };
 
