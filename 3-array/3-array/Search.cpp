@@ -208,6 +208,25 @@ public:
         }
     }
     
+    void findNumbersWithSum2(int arr[],int sum,int n) {
+        if (n <= 0) {
+            return;
+        }
+        int i = 0; //头指针
+        int j = n - 1;//尾指针
+        while (i < j) {
+            int res = arr[i] + arr[j];
+            if (res == sum) {
+                printf("sum和为为%d的数字是:%d--%d\n",sum,arr[i],arr[j]);
+                break;
+            } else if (res < sum) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+    }
+    
     void test() {
 //        int arr[7] = {2,3,4,5,2,3,1};
 //        findRepeatedNumber(arr, 7);
@@ -244,6 +263,7 @@ public:
         printf("查找到最后的结果:%d\n",findRes);
         int sumArr[] = {1,4,7,11,15,18};
         findNumbersWithSum(sumArr, 15, 6);
+        findNumbersWithSum2(sumArr, 15, 6);
     }
 };
 
