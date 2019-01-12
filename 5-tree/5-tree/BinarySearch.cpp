@@ -33,6 +33,19 @@ public:
         return arr[k-1];
     }
     
+    void printAllPath(TreeNode *root,char *paths,int index) {
+        paths[index++] = root->data;
+        if (root->lchild == NULL && root->rchild == NULL) {
+            for (int i = 0; i <= index; i++) {
+                printf("%c",*(paths+i));
+            }
+            printf("\n");
+        } else {
+            printAllPath(root->lchild, paths, index);
+            printAllPath(root->rchild, paths, index);
+        }
+    }
+    
     void test() {
         TreeNode node1 = {'5',NULL};
         TreeNode node2 = {'3',NULL};
@@ -50,5 +63,7 @@ public:
         int k = 4;
         char res = findNumber(&node1, k);
         printf("二叉搜索树的第%d大结点:%c\n",k,res);
+        char paths[100];
+        printAllPath(&node1, paths, 0);
     }
 };
