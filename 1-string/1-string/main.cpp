@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Permutation.cpp"
 #include "Search.cpp"
+#include "Reverse.cpp"
 using namespace std;
 
 // 字符串反转
@@ -114,5 +115,7 @@ int main() {
     permute.test();
     Search search;
     search.test();
+    Reverse reverse;
+    reverse.test();
     return 0;
 }

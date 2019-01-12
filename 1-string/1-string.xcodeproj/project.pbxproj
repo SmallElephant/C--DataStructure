@@ -10,6 +10,7 @@
 		A86E380121D782F30082144D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A86E380021D782F30082144D /* main.cpp */; };
 		DA7E4D3921E258B1000FA99B /* Permutation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3821E258B1000FA99B /* Permutation.cpp */; };
 		DA7E4D3F21E893CE000FA99B /* Search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3E21E893CE000FA99B /* Search.cpp */; };
+		DA7E4D4E21EA2892000FA99B /* Reverse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D4D21EA2892000FA99B /* Reverse.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,7 @@
 		A86E380021D782F30082144D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		DA7E4D3821E258B1000FA99B /* Permutation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Permutation.cpp; sourceTree = "<group>"; };
 		DA7E4D3E21E893CE000FA99B /* Search.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Search.cpp; sourceTree = "<group>"; };
+		DA7E4D4D21EA2892000FA99B /* Reverse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Reverse.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				A86E380021D782F30082144D /* main.cpp */,
 				DA7E4D3821E258B1000FA99B /* Permutation.cpp */,
 				DA7E4D3E21E893CE000FA99B /* Search.cpp */,
+				DA7E4D4D21EA2892000FA99B /* Reverse.cpp */,
 			);
 			path = "1-string";
 			sourceTree = "<group>";
@@ -124,6 +127,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7E4D4E21EA2892000FA99B /* Reverse.cpp in Sources */,
 				DA7E4D3921E258B1000FA99B /* Permutation.cpp in Sources */,
 				DA7E4D3F21E893CE000FA99B /* Search.cpp in Sources */,
 				A86E380121D782F30082144D /* main.cpp in Sources */,
