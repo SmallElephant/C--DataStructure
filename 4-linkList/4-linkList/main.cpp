@@ -7,12 +7,9 @@
 //
 
 #include <iostream>
+#include "Common.hpp"
 #include "RandomList.cpp"
-
-typedef struct LinkNode {
-    char data;
-    struct LinkNode *next;
-} LinkNode;
+#include "Search.cpp"
 
 void visit(LinkNode *node) {
     if (node == NULL) {
@@ -328,5 +325,7 @@ int main() {
     testMergeLinkList();
     RandomList randomList;
     randomList.test();
+    Search search;
+    search.test();
     return 0;
 }
