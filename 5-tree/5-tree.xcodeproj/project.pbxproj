@@ -15,6 +15,7 @@
 		DA7E4D0B21E1B9BA000FA99B /* PathTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */; };
 		DA7E4D3521E22C2E000FA99B /* ConvertTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */; };
 		DA7E4D3721E23FD3000FA99B /* Serialize.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D3621E23FD3000FA99B /* Serialize.cpp */; };
+		DA7E4D4C21E9A5A5000FA99B /* BinarySearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DA7E4D4B21E9A5A5000FA99B /* BinarySearch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,7 @@
 		DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PathTree.cpp; sourceTree = "<group>"; };
 		DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ConvertTree.cpp; sourceTree = "<group>"; };
 		DA7E4D3621E23FD3000FA99B /* Serialize.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Serialize.cpp; sourceTree = "<group>"; };
+		DA7E4D4B21E9A5A5000FA99B /* BinarySearch.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BinarySearch.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				DA7E4D0A21E1B9BA000FA99B /* PathTree.cpp */,
 				DA7E4D3421E22C2E000FA99B /* ConvertTree.cpp */,
 				DA7E4D3621E23FD3000FA99B /* Serialize.cpp */,
+				DA7E4D4B21E9A5A5000FA99B /* BinarySearch.cpp */,
 			);
 			path = "5-tree";
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA7E4D3521E22C2E000FA99B /* ConvertTree.cpp in Sources */,
+				DA7E4D4C21E9A5A5000FA99B /* BinarySearch.cpp in Sources */,
 				DA7E4D0621E1A677000FA99B /* TreeOrder.cpp in Sources */,
 				DA7E4CE021DA5F55000FA99B /* main.cpp in Sources */,
 				DA7E4D0B21E1B9BA000FA99B /* PathTree.cpp in Sources */,

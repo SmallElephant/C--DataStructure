@@ -13,6 +13,7 @@
 #include "PathTree.cpp"
 #include "ConvertTree.cpp"
 #include "Serialize.cpp"
+#include "BinarySearch.cpp"
 using namespace std;
 
 #define maxsize 10
@@ -495,5 +496,7 @@ int main() {
     convert.test();
     Serialize serialize;
     serialize.test();
+    BinarySearch search;
+    search.test();
     return 0;
 }
