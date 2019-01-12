@@ -111,6 +111,16 @@ public:
         return count;
     }
     
+    int getNumOfK(int arr[],int len,int k) {
+        int count = 0;
+        for (int i = 0; i < len; i++) {
+            if (k == arr[i]) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
     void test() {
 //        int arr[7] = {2,3,4,5,2,3,1};
 //        findRepeatedNumber(arr, 7);
@@ -134,6 +144,9 @@ public:
 //        printf("二分查找位置:%d\n",index);
         int count = numOf1From1ToN(12);
         printf("1出现的总共次数:%d\n",count);
+        int arr[] = {1,2,3,3,3,3,5,6};
+        int nums = getNumOfK(arr, 8, 3);
+        printf("出现的次数:%d\n",nums);
     }
 };
 
