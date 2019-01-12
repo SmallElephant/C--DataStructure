@@ -170,6 +170,31 @@ public:
         printf("只出现一次的数字:%d\n",h);
     }
     
+    // 一个数组中除了一个数字只出现了一次之外，其他数字都出现了三次。
+    
+    int findNumber(int arr[],int n) {
+        if (n <= 0) {
+            return -1;
+        }
+        int bits[32] = {0};
+        for (int i = 0; i < n; i++) { // 数组中数字的二进制位分别相加
+            int bitMask = 1;
+            for (int j = 31; j >= 0; j--) { //  先从低位开始进行统计计算
+                int res = arr[i] & bitMask;
+                if (res != 0) {
+                    bits[j] += 1;
+                }
+                bitMask = bitMask << 1;
+            }
+        }
+        int result = 0;
+        for (int i = 0; i < 32; i++) {
+            result = result << 1;
+            result += bits[i] % 3;
+        }
+        return result;
+    }
+    
     void test() {
 //        int arr[7] = {2,3,4,5,2,3,1};
 //        findRepeatedNumber(arr, 7);
@@ -200,6 +225,10 @@ public:
         findNumberOfData(repeate, 8);
 //        int repeate[] = {1,1,3,7,3};
 //        findNumberOfData(repeate, 5);
+        
+        int find[] = {1,1,1,6,3,3,9,3,9,9};
+        int findRes = findNumber(find, 10);
+        printf("查找到最后的结果:%d\n",findRes);
     }
 };
 
