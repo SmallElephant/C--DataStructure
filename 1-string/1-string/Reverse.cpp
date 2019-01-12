@@ -39,10 +39,21 @@ public:
         }
     }
     
+    // 左旋转的位数
+    void roatestring(char *str,int n) {
+        int len = (int)strlen(str);
+        reversestring(str, 0, len - 1);
+        reversestring(str, 0, len - n - 1);
+        reversestring(str, len - n, len - 1);
+    }
+    
     void test() {
         char restr[] = "I am a man.";
         reverse(restr);
         printf("反转的字符串:%s\n",restr);
+        char roatestr[] = "abcdefg";
+        roatestring(roatestr, 2);
+        printf("翻转最终的结果:%s\n",roatestr);
     }
     
 private:
