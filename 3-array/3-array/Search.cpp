@@ -124,7 +124,7 @@ public:
     int findFirstBitIs1(int num) {
         int pos = 0;
         int tmp = 1 << pos;
-        while (num & tmp) {
+        while ((num & tmp) == 0) {
             pos++;
             tmp = 1 << pos;
         }
@@ -144,7 +144,30 @@ public:
         for (int i = 1; i < n; i++) {
             res = res ^ arr[i];
         }
-        printf("数组中异或单独的数字:%d\n",res);
+        int pos = findFirstBitIs1(res);
+        printf("数组中异或单独的数字:%d\n",pos);
+        int left[10];
+        int right[10];
+        int i = 0;
+        int j = 0;
+        for (int k = 0; k < n; k++) {
+            bool bitRes = isBit1(arr[k], pos);
+            if (bitRes) {
+                left[i++] = arr[k];
+            } else {
+                right[j++] = arr[k];
+            }
+        }
+        int m = left[0];
+        for (int k = 1;k < i;k++) {
+            m = m ^ left[k];
+        }
+        printf("只出现一次的数字:%d\n",m);
+        int h = right[0];
+        for (int k = 1;k < j;k++) {
+            h = h ^ right[k];
+        }
+        printf("只出现一次的数字:%d\n",h);
     }
     
     void test() {
@@ -173,8 +196,10 @@ public:
         int arr[] = {1,2,3,3,3,3,5,6};
         int nums = getNumOfK(arr, 8, 3);
         printf("出现的次数:%d\n",nums);
-        int repeate[] = {1,1,2,2,3,4,3};
-        findNumberOfData(repeate, 7);
+        int repeate[] = {1,1,2,2,3,7,3,10};
+        findNumberOfData(repeate, 8);
+//        int repeate[] = {1,1,3,7,3};
+//        findNumberOfData(repeate, 5);
     }
 };
 
