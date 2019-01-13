@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include "Search.cpp"
-#include "Sort.cpp"
+#include "Sort.hpp"
 #include "Sum.cpp"
 #include "Permuate.cpp"
 #include "Reverse.cpp"

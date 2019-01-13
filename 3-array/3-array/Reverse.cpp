@@ -2,10 +2,11 @@
 //  Reverse.cpp
 //  3-array
 //
-//  Created by FlyElephant on 2019/1/12.
+//  Created by FlyElephant on 2019/1/13.
 //  Copyright © 2019年 FlyElephant. All rights reserved.
 //
 
+#include "Reverse.hpp"
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -56,11 +57,47 @@ public:
         }
     }
     
+    void printArr(int arr[],int n) {
+        for (int i = 0; i < n; i++) {
+            printf("%d ",arr[i]);
+        }
+        printf("\n");
+    }
+    
+    bool isContinuous(int arr[],int n) {
+        Sort sort;
+        sort.quickSort(arr, 0, n-1);
+        printArr(arr, n);
+        int numOfZero = 0;
+        int numOfGap = 0;
+        int pre = arr[0];
+        for (int i = 0; i < n; i++) {
+            if (arr[i] == 0) {
+                numOfZero++;
+            } else {
+                if (arr[i] == pre) {
+                    return false;
+                }
+                int gap = arr[i] - pre - 1;
+                pre = arr[i];
+                numOfGap += gap;
+            }
+        }
+        return numOfGap == numOfZero ? true : false;
+    }
+    
     // 数组中的逆序对
     void test() {
         int arr[] = {7,5,6,4};
         int count = reversePairs(arr, 4);
         printf("数组中逆序对出现的次数:%d\n",count);
         probability(6, 6);
+        int contious[] = {0,2,1,3,8};
+        bool isContious = isContinuous(contious, 5);
+        if (isContious) {
+            printf("是顺子\n");
+        } else {
+            printf("不是顺子\n");
+        }
     }
 };
