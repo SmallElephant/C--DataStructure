@@ -86,6 +86,25 @@ public:
         return numOfGap == numOfZero ? true : false;
     }
     
+    
+    int maxDiff(int arr[],int n) {
+        if (n <= 0) {
+            return -1;
+        }
+        int maxDiff = 0;
+        int min = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+            int diff = arr[i] - min;
+            if (diff > maxDiff) {
+                maxDiff = diff;
+            }
+        }
+        return maxDiff;
+    }
+    
     // 数组中的逆序对
     void test() {
         int arr[] = {7,5,6,4};
@@ -99,5 +118,8 @@ public:
         } else {
             printf("不是顺子\n");
         }
+        int diffArr[] = {9,11,8,5,7,12,16,14};
+        int diff = maxDiff(diffArr,8);
+        printf("最大的差额:%d\n",diff);
     }
 };
